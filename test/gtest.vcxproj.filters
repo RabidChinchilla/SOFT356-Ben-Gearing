@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\f849369bdf743d100cbbcfde20606f47\gtest-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\f849369bdf743d100cbbcfde20606f47\gtest-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\f849369bdf743d100cbbcfde20606f47\gtest-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\f849369bdf743d100cbbcfde20606f47\gtest-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\f849369bdf743d100cbbcfde20606f47\gtest-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\f849369bdf743d100cbbcfde20606f47\gtest-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\f849369bdf743d100cbbcfde20606f47\gtest-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\33cb96634e8175a5b4d84164bb355ccf\gtest-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\cb8964220d629c27e8c8c12a8fc918ce\gtest.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\CMakeFiles\gtest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{9BB2EBD5-E535-3BCD-9161-5F0D16F02414}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

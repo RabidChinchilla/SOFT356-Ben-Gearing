@@ -1,0 +1,13 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.15/Modules/CheckCSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/CheckFunctionExists.c
+C:/Program Files/CMake/share/cmake-3.15/Modules/CheckFunctionExists.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/CheckIncludeFile.c.in
+C:/Program Files/CMake/share/cmake-3.15/Modules/CheckIncludeFile.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/CheckIncludeFileCXX.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/CheckTypeSize.c.in
+C:/Program Files/CMake/share/cmake-3.15/Modules/CheckTypeSize.cmake
+C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/CMakeFiles/CheckTypeSize/OFF64_T.c
+C:/Users/Gearing/Downloads/assimp-3.3.1/assimp-3.3.1/contrib/zlib/CMakeLists.txt
+C:/Users/Gearing/Downloads/assimp-3.3.1/assimp-3.3.1/contrib/zlib/zconf.h.cmakein
+C:/Users/Gearing/Downloads/assimp-3.3.1/assimp-3.3.1/contrib/zlib/zlib.pc.cmakein

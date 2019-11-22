@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{EEE8610A-88ED-3106-8670-C9F4545847BD}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>unit</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">unit.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">unit</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">unit.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">unit</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">unit.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">unit</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">unit.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">unit</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\.;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\googletest\include;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\gtest\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;OPENDDL_NO_USE_CPP11;ASSIMP_BUILD_NO_C4D_IMPORTER;ASSIMP_TEST_MODELS_DIR="C:/Users/Gearing/Downloads/assimp-3.3.1/assimp-3.3.1/test/models";CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;OPENDDL_NO_USE_CPP11;ASSIMP_BUILD_NO_C4D_IMPORTER;ASSIMP_TEST_MODELS_DIR=\"C:/Users/Gearing/Downloads/assimp-3.3.1/assimp-3.3.1/test/models\";CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\.;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\googletest\include;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\gtest\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\.;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\googletest\include;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\gtest\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\code\Debug\assimp-vc140-mt.lib;gtest.lib;..\contrib\zlib\Debug\zlibstaticd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest;C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest/$(Configuration);C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest/ReleaseLibs;C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest/ReleaseLibs/$(Configuration);C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest/DebugLibs;C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest/DebugLibs/$(Configuration);C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing;C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/$(Configuration);/lib;/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/Debug/unit.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/Debug/unit.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\.;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\googletest\include;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\gtest\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OPENDDL_NO_USE_CPP11;ASSIMP_BUILD_NO_C4D_IMPORTER;ASSIMP_TEST_MODELS_DIR="C:/Users/Gearing/Downloads/assimp-3.3.1/assimp-3.3.1/test/models";CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OPENDDL_NO_USE_CPP11;ASSIMP_BUILD_NO_C4D_IMPORTER;ASSIMP_TEST_MODELS_DIR=\"C:/Users/Gearing/Downloads/assimp-3.3.1/assimp-3.3.1/test/models\";CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\.;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\googletest\include;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\gtest\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\.;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\googletest\include;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\gtest\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\code\Release\assimp-vc140-mt.lib;gtest.lib;..\contrib\zlib\Release\zlibstatic.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest;C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest/$(Configuration);C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest/ReleaseLibs;C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest/ReleaseLibs/$(Configuration);C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest/DebugLibs;C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest/DebugLibs/$(Configuration);C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing;C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/$(Configuration);/lib;/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/Release/unit.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/Release/unit.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\.;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\googletest\include;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\gtest\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OPENDDL_NO_USE_CPP11;ASSIMP_BUILD_NO_C4D_IMPORTER;ASSIMP_TEST_MODELS_DIR="C:/Users/Gearing/Downloads/assimp-3.3.1/assimp-3.3.1/test/models";CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OPENDDL_NO_USE_CPP11;ASSIMP_BUILD_NO_C4D_IMPORTER;ASSIMP_TEST_MODELS_DIR=\"C:/Users/Gearing/Downloads/assimp-3.3.1/assimp-3.3.1/test/models\";CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\.;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\googletest\include;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\gtest\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\.;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\googletest\include;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\gtest\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\code\MinSizeRel\assimp-vc140-mt.lib;gtest.lib;..\contrib\zlib\MinSizeRel\zlibstatic.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest;C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest/$(Configuration);C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest/ReleaseLibs;C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest/ReleaseLibs/$(Configuration);C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest/DebugLibs;C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest/DebugLibs/$(Configuration);C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing;C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/$(Configuration);/lib;/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/MinSizeRel/unit.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/MinSizeRel/unit.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\.;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\googletest\include;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\gtest\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OPENDDL_NO_USE_CPP11;ASSIMP_BUILD_NO_C4D_IMPORTER;ASSIMP_TEST_MODELS_DIR="C:/Users/Gearing/Downloads/assimp-3.3.1/assimp-3.3.1/test/models";CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OPENDDL_NO_USE_CPP11;ASSIMP_BUILD_NO_C4D_IMPORTER;ASSIMP_TEST_MODELS_DIR=\"C:/Users/Gearing/Downloads/assimp-3.3.1/assimp-3.3.1/test/models\";CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\.;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\googletest\include;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\gtest\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\.;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\contrib\zlib;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\googletest\include;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\src\gtest\gtest\include;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\code\RelWithDebInfo\assimp-vc140-mt.lib;gtest.lib;..\contrib\zlib\RelWithDebInfo\zlibstatic.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest;C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest/$(Configuration);C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest/ReleaseLibs;C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest/ReleaseLibs/$(Configuration);C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest/DebugLibs;C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/gtest/src/gtest-build/googlemock/gtest/DebugLibs/$(Configuration);C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing;C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/$(Configuration);/lib;/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/RelWithDebInfo/unit.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/RelWithDebInfo/unit.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/Gearing/Downloads/assimp-3.3.1/assimp-3.3.1/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Gearing/Downloads/assimp-3.3.1/assimp-3.3.1 -BC:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing --check-stamp-file C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.15\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CheckIncludeFile.c.in;C:\Program Files\CMake\share\cmake-3.15\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\RepositoryInfo.txt.in;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\tmp\gtest-cfgcmd.txt.in;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\cmake-modules\AddGTest.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/Gearing/Downloads/assimp-3.3.1/assimp-3.3.1/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Gearing/Downloads/assimp-3.3.1/assimp-3.3.1 -BC:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing --check-stamp-file C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.15\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CheckIncludeFile.c.in;C:\Program Files\CMake\share\cmake-3.15\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\RepositoryInfo.txt.in;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\tmp\gtest-cfgcmd.txt.in;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\cmake-modules\AddGTest.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/Gearing/Downloads/assimp-3.3.1/assimp-3.3.1/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Gearing/Downloads/assimp-3.3.1/assimp-3.3.1 -BC:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing --check-stamp-file C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.15\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CheckIncludeFile.c.in;C:\Program Files\CMake\share\cmake-3.15\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\RepositoryInfo.txt.in;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\tmp\gtest-cfgcmd.txt.in;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\cmake-modules\AddGTest.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/Gearing/Downloads/assimp-3.3.1/assimp-3.3.1/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Gearing/Downloads/assimp-3.3.1/assimp-3.3.1 -BC:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing --check-stamp-file C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.15\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CheckIncludeFile.c.in;C:\Program Files\CMake\share\cmake-3.15\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\RepositoryInfo.txt.in;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest\tmp\gtest-cfgcmd.txt.in;C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\cmake-modules\AddGTest.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\CCompilerTest.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\Main.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\code\Version.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\AssimpAPITest.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utBlendImportAreaLight.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utBlendImportMaterials.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utColladaExportCamera.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utColladaExportLight.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utFastAtof.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utFindDegenerates.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utFindInvalidData.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utFixInfacingNormals.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utGenNormals.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utImporter.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utImproveCacheLocality.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utIOSystem.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utIssues.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utJoinVertices.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utLimitBoneWeights.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utMaterialSystem.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utMatrix3x3.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utMatrix4x4.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utPretransformVertices.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utRemoveComments.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utRemoveComponent.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utRemoveRedundantMaterials.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utScenePreprocessor.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utSharedPPData.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utStringUtils.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utSortByPType.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utSplitLargeMeshes.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utTargetAnimation.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utTextureTransform.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utTriangulate.cpp" />
+    <ClCompile Include="C:\Users\Gearing\Downloads\assimp-3.3.1\assimp-3.3.1\test\unit\utVertexTriangleAdjacency.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ZERO_CHECK.vcxproj">
+      <Project>{08822592-60C0-3278-A23C-4BE4FD3EAEF6}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\code\assimp.vcxproj">
+      <Project>{6D2F6E2D-BBF8-36B0-B7A5-8CDF9FF372A9}</Project>
+      <Name>assimp</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\test\gtest.vcxproj">
+      <Project>{DB19548D-1C06-36E8-B594-60EAE7E2A0F1}</Project>
+      <Name>gtest</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\contrib\zlib\zlibstatic.vcxproj">
+      <Project>{A62E14CA-5CB8-3740-9426-48706A9C7BC8}</Project>
+      <Name>zlibstatic</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
