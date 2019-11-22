@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\25eb69d977bb21d836b4da3f07911aa8\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{9BB2EBD5-E535-3BCD-9161-5F0D16F02414}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DCB2EEAE-CC5D-34B3-8D63-B6793AD15DDB}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\AntTweakBar-1.16\include;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\glfw-3.1.2\include;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\glm-0.9.7.1;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\glew-1.13.0\include;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\assimp-3.0.1270\include;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\bullet-2.81-rev2613\src;C:\Users\Gearing\Downloads\ogl-master\ogl-master\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\AntTweakBar-1.16\include;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\glfw-3.1.2\include;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\glm-0.9.7.1;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\glew-1.13.0\include;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\assimp-3.0.1270\include;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\bullet-2.81-rev2613\src;C:\Users\Gearing\Downloads\ogl-master\ogl-master\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\AntTweakBar-1.16\include;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\glfw-3.1.2\include;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\glm-0.9.7.1;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\glew-1.13.0\include;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\assimp-3.0.1270\include;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\bullet-2.81-rev2613\src;C:\Users\Gearing\Downloads\ogl-master\ogl-master\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\AntTweakBar-1.16\include;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\glfw-3.1.2\include;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\glm-0.9.7.1;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\glew-1.13.0\include;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\assimp-3.0.1270\include;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\bullet-2.81-rev2613\src;C:\Users\Gearing\Downloads\ogl-master\ogl-master\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Gearing\Downloads\ogl-master\ogl-master\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/Gearing/Downloads/ogl-master/ogl-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Gearing/Downloads/ogl-master/ogl-master -BC:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing --check-stamp-file C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Platform\WindowsPaths.cmake;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\3.15.5\CMakeCCompiler.cmake;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\3.15.5\CMakeCXXCompiler.cmake;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\3.15.5\CMakeRCCompiler.cmake;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\3.15.5\CMakeSystem.cmake;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\CleanDirectoryList.cmake;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\CreateLaunchers.cmake;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\ListCombinations.cmake;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\MSVCMultipleProcessCompile.cmake;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\launcher-templates\targetlauncher.cmd.in;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\launcher-templates\vcxproj.user.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/Gearing/Downloads/ogl-master/ogl-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Gearing/Downloads/ogl-master/ogl-master -BC:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing --check-stamp-file C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Platform\WindowsPaths.cmake;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\3.15.5\CMakeCCompiler.cmake;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\3.15.5\CMakeCXXCompiler.cmake;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\3.15.5\CMakeRCCompiler.cmake;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\3.15.5\CMakeSystem.cmake;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\CleanDirectoryList.cmake;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\CreateLaunchers.cmake;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\ListCombinations.cmake;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\MSVCMultipleProcessCompile.cmake;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\launcher-templates\targetlauncher.cmd.in;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\launcher-templates\vcxproj.user.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/Gearing/Downloads/ogl-master/ogl-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Gearing/Downloads/ogl-master/ogl-master -BC:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing --check-stamp-file C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Platform\WindowsPaths.cmake;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\3.15.5\CMakeCCompiler.cmake;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\3.15.5\CMakeCXXCompiler.cmake;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\3.15.5\CMakeRCCompiler.cmake;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\3.15.5\CMakeSystem.cmake;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\CleanDirectoryList.cmake;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\CreateLaunchers.cmake;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\ListCombinations.cmake;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\MSVCMultipleProcessCompile.cmake;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\launcher-templates\targetlauncher.cmd.in;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\launcher-templates\vcxproj.user.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/Gearing/Downloads/ogl-master/ogl-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Gearing/Downloads/ogl-master/ogl-master -BC:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing --check-stamp-file C:/Users/Gearing/Documents/GitHub/SOFT356-Ben-Gearing/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.15\Modules\Platform\WindowsPaths.cmake;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\3.15.5\CMakeCCompiler.cmake;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\3.15.5\CMakeCXXCompiler.cmake;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\3.15.5\CMakeRCCompiler.cmake;C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\3.15.5\CMakeSystem.cmake;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\CleanDirectoryList.cmake;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\CreateLaunchers.cmake;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\ListCombinations.cmake;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\MSVCMultipleProcessCompile.cmake;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\launcher-templates\targetlauncher.cmd.in;C:\Users\Gearing\Downloads\ogl-master\ogl-master\external\rpavlik-cmake-modules-fe2273\launcher-templates\vcxproj.user.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ZERO_CHECK.vcxproj">
+      <Project>{08822592-60C0-3278-A23C-4BE4FD3EAEF6}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\ANTTWEAKBAR_116_OGLCORE_GLFW.vcxproj">
+      <Project>{CB7A7FF0-2617-32D6-92F7-AA8F3FB48DEC}</Project>
+      <Name>ANTTWEAKBAR_116_OGLCORE_GLFW</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\bullet-2.81-rev2613\src\BulletCollision\BulletCollision.vcxproj">
+      <Project>{CE86F920-50E4-35B9-8BED-6F817E7B450C}</Project>
+      <Name>BulletCollision</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\bullet-2.81-rev2613\src\BulletDynamics\BulletDynamics.vcxproj">
+      <Project>{792CAA1B-C4DA-3849-B178-872D89C740AE}</Project>
+      <Name>BulletDynamics</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\bullet-2.81-rev2613\src\BulletSoftBody\BulletSoftBody.vcxproj">
+      <Project>{1131FACD-583D-3DD4-BB3A-92BBF71EFA85}</Project>
+      <Name>BulletSoftBody</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\GLEW_1130.vcxproj">
+      <Project>{E2908AEF-0751-31FF-AC9E-34A648FBC1F0}</Project>
+      <Name>GLEW_1130</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\bullet-2.81-rev2613\src\LinearMath\LinearMath.vcxproj">
+      <Project>{B5DE643B-D4C1-39FE-8612-C9B9AC1192AF}</Project>
+      <Name>LinearMath</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\assimp-3.0.1270\code\assimp.vcxproj">
+      <Project>{6D2F6E2D-BBF8-36B0-B7A5-8CDF9FF372A9}</Project>
+      <Name>assimp</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\examples\boing.vcxproj">
+      <Project>{C87AD88D-D5C6-3B3E-B0EE-F3DEFFD19B7F}</Project>
+      <Name>boing</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\tests\clipboard.vcxproj">
+      <Project>{1F182237-FBC9-35B7-AB65-8AB1531E319A}</Project>
+      <Name>clipboard</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\tests\cursor.vcxproj">
+      <Project>{CE195AE6-4B0A-326B-9A2F-ED46B75D8D32}</Project>
+      <Name>cursor</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\tests\empty.vcxproj">
+      <Project>{28B2AFC9-7DB1-302F-BA02-2EE2BE957CC6}</Project>
+      <Name>empty</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\tests\events.vcxproj">
+      <Project>{C2C4B747-6958-377A-A3BB-922CC713C5F3}</Project>
+      <Name>events</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\tests\gamma.vcxproj">
+      <Project>{0BBF52C6-0F2E-305A-9095-306CBC13857D}</Project>
+      <Name>gamma</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\examples\gears.vcxproj">
+      <Project>{423FA4D4-D889-3D09-8751-FC88597B9301}</Project>
+      <Name>gears</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\src\glfw.vcxproj">
+      <Project>{601FA8B5-AB6D-348E-8DA6-27862129E994}</Project>
+      <Name>glfw</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\tests\glfwinfo.vcxproj">
+      <Project>{CB3C0229-643C-3088-9AEB-352041CEF8A6}</Project>
+      <Name>glfwinfo</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\examples\heightmap.vcxproj">
+      <Project>{530AA600-C101-37A9-9422-54924FE6633E}</Project>
+      <Name>heightmap</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\tests\iconify.vcxproj">
+      <Project>{99E92F4A-F7C3-3A0D-834B-2A878AB730C0}</Project>
+      <Name>iconify</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\tests\joysticks.vcxproj">
+      <Project>{04FCF17C-7178-3A79-A35C-766C6EE16020}</Project>
+      <Name>joysticks</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\misc05_picking_BulletPhysics.vcxproj">
+      <Project>{3A5D5C2D-9126-3B8F-976B-DBB662CB7D87}</Project>
+      <Name>misc05_picking_BulletPhysics</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\misc05_picking_custom.vcxproj">
+      <Project>{E3B6B575-F7FE-3E44-948C-43024E328BC8}</Project>
+      <Name>misc05_picking_custom</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\misc05_picking_slow_easy.vcxproj">
+      <Project>{CBBA52E0-0911-38DC-B09C-44EB5D39C9F8}</Project>
+      <Name>misc05_picking_slow_easy</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\tests\monitors.vcxproj">
+      <Project>{BA4974AD-B157-3CE7-84F7-47E83CA0BA77}</Project>
+      <Name>monitors</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\tests\msaa.vcxproj">
+      <Project>{EE83CDB0-C944-37FB-B31A-772F0AAC9D6C}</Project>
+      <Name>msaa</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\examples\particles.vcxproj">
+      <Project>{5ED1119B-3ABB-34A2-9647-33FDA70C9241}</Project>
+      <Name>particles</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\playground.vcxproj">
+      <Project>{62E69569-0B6E-3DBC-B0A8-A198319CD496}</Project>
+      <Name>playground</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\tests\reopen.vcxproj">
+      <Project>{13055E43-3E4D-34D5-8135-D57761E473AF}</Project>
+      <Name>reopen</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\tests\sharing.vcxproj">
+      <Project>{8B20D695-C45A-33A5-82A2-09CE70E73901}</Project>
+      <Name>sharing</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\examples\simple.vcxproj">
+      <Project>{F70BE604-7E92-361A-AA02-5370AA166028}</Project>
+      <Name>simple</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\examples\splitview.vcxproj">
+      <Project>{A80F43DB-D65B-3C4B-B665-35F5ACD107C2}</Project>
+      <Name>splitview</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\tests\tearing.vcxproj">
+      <Project>{1B88216B-9CBF-3187-AD1A-B2244200A563}</Project>
+      <Name>tearing</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\tests\threads.vcxproj">
+      <Project>{9E103B2C-E9FE-3953-BF4E-479AC18F8728}</Project>
+      <Name>threads</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\tests\title.vcxproj">
+      <Project>{B233685A-25B1-30AF-89A8-C62555D1ED4A}</Project>
+      <Name>title</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\tutorial01_first_window.vcxproj">
+      <Project>{524FB323-F340-3BA9-A42B-0F4EBBDD93D4}</Project>
+      <Name>tutorial01_first_window</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\tutorial02_red_triangle.vcxproj">
+      <Project>{880D7432-EAAD-39F8-9D46-AC2B3541BE46}</Project>
+      <Name>tutorial02_red_triangle</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\tutorial03_matrices.vcxproj">
+      <Project>{B7019892-3BA4-38F0-9128-58B1CCADCDF0}</Project>
+      <Name>tutorial03_matrices</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\tutorial04_colored_cube.vcxproj">
+      <Project>{A9090C8D-C85C-33B5-B9D4-F5B0D2646DEA}</Project>
+      <Name>tutorial04_colored_cube</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\tutorial05_textured_cube.vcxproj">
+      <Project>{2DB74AC7-1179-3A61-B603-9C7FF44D4F36}</Project>
+      <Name>tutorial05_textured_cube</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\tutorial06_keyboard_and_mouse.vcxproj">
+      <Project>{F0611FF0-D185-3CEE-BBA2-734FFE09E1DB}</Project>
+      <Name>tutorial06_keyboard_and_mouse</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\tutorial07_model_loading.vcxproj">
+      <Project>{30287BC3-E3D7-3DD0-B252-E6C9F39E7F6F}</Project>
+      <Name>tutorial07_model_loading</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\tutorial08_basic_shading.vcxproj">
+      <Project>{EB3C5848-8873-3D42-8260-8D6E7E8388D2}</Project>
+      <Name>tutorial08_basic_shading</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\tutorial09_AssImp.vcxproj">
+      <Project>{32F36966-B388-3BE2-9F7E-A8E8C79B5802}</Project>
+      <Name>tutorial09_AssImp</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\tutorial09_several_objects.vcxproj">
+      <Project>{C4EE8A88-E0DE-3B42-B261-1BB572D67243}</Project>
+      <Name>tutorial09_several_objects</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\tutorial09_vbo_indexing.vcxproj">
+      <Project>{09FDC4A2-05A2-3B6C-BF6F-18BA3A11BF0F}</Project>
+      <Name>tutorial09_vbo_indexing</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\tutorial10_transparency.vcxproj">
+      <Project>{E851F166-266B-35AA-B8D9-FBC18FCB5E03}</Project>
+      <Name>tutorial10_transparency</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\tutorial11_2d_fonts.vcxproj">
+      <Project>{CA765A56-9787-310A-BCC2-770BA912AE0E}</Project>
+      <Name>tutorial11_2d_fonts</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\tutorial12_extensions.vcxproj">
+      <Project>{1150EC03-ED12-31B7-BDAA-AED9D0D851C9}</Project>
+      <Name>tutorial12_extensions</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\tutorial13_normal_mapping.vcxproj">
+      <Project>{6299D022-EBCD-344A-9DBC-9792B4A94B08}</Project>
+      <Name>tutorial13_normal_mapping</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\tutorial14_render_to_texture.vcxproj">
+      <Project>{25DD9188-1630-3A07-9D9E-2446A1DC4920}</Project>
+      <Name>tutorial14_render_to_texture</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\tutorial15_lightmaps.vcxproj">
+      <Project>{89919998-5FB5-3743-AE59-71BE4EF94629}</Project>
+      <Name>tutorial15_lightmaps</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\tutorial16_shadowmaps.vcxproj">
+      <Project>{163EB3C9-A586-394E-B3BF-9088A3300694}</Project>
+      <Name>tutorial16_shadowmaps</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\tutorial16_shadowmaps_simple.vcxproj">
+      <Project>{EFDE7944-9171-3654-AFA6-3B11BA7E9D40}</Project>
+      <Name>tutorial16_shadowmaps_simple</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\tutorial17_rotations.vcxproj">
+      <Project>{C1A175D3-273C-3522-A479-0F7CE3E422B0}</Project>
+      <Name>tutorial17_rotations</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\tutorial18_billboards.vcxproj">
+      <Project>{53A1AA59-A76A-386E-B0E8-F0305A385B5F}</Project>
+      <Name>tutorial18_billboards</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\tutorial18_particles.vcxproj">
+      <Project>{F3B12F2A-A74E-3BE6-B7AD-DA4CF1DE3AC6}</Project>
+      <Name>tutorial18_particles</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\examples\wave.vcxproj">
+      <Project>{E0CD1610-7A2F-3435-85F1-8E20573A38AD}</Project>
+      <Name>wave</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\glfw-3.1.2\tests\windows.vcxproj">
+      <Project>{5D295CF8-D286-392B-B2B5-FD9694126293}</Project>
+      <Name>windows</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\external\assimp-3.0.1270\contrib\zlib\zlib.vcxproj">
+      <Project>{8978DCA8-8E71-30F1-92CB-4AD0A7E4E68B}</Project>
+      <Name>zlib</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
