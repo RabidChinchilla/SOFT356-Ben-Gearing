@@ -16,6 +16,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Media\triangles.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Media\triangles.vert">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stb_image.h">
@@ -30,9 +36,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LoadShaders.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TexturedCube.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source.cpp">

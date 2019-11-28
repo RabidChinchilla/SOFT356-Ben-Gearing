@@ -124,6 +124,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="Media\triangles.frag" />
+    <None Include="Media\triangles.vert" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -134,7 +136,6 @@
   <ItemGroup>
     <ClCompile Include="LoadShaders.cpp" />
     <ClCompile Include="Source.cpp" />
-    <ClCompile Include="TexturedCube.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

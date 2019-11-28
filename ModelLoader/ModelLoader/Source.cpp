@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
-#include <vector>
 #include <fstream>
 #include <sstream>
+#include <vector>
 
 // OpenGL Related Libraries
 #include <GL/glew.h>
@@ -42,7 +42,7 @@ const char* path = "Media/Creeper.obj";
 //===========================================
 void init();
 void display();
-bool loadOBJ(const char* path);
+//bool loadOBJ(const char* path);
 
 #define BUFFER_OFFSET(a) ((void*)(a))
 
@@ -55,8 +55,8 @@ void init(void)
 
 	ShaderInfo shaders[] =
 	{
-		{ GL_VERTEX_SHADER, "Media/vertexshader.vert"},
-		{ GL_FRAGMENT_SHADER, "Media/fragmentshader.frag"},
+		{ GL_VERTEX_SHADER, "media/triangles.vert"},
+		{ GL_FRAGMENT_SHADER, "media/triangles.frag"},
 		{ GL_NONE, NULL}
 	};
 
@@ -110,7 +110,7 @@ void init(void)
 
 	};
 
-	loadOBJ(path);
+	//loadOBJ(path);
 
 	//file parsing
 	vector<glm::vec3> vertices;
@@ -143,7 +143,7 @@ void init(void)
 			}
 			else if (currentLine.at(0) == 'f') {
 				int verticesIndex[4], textureIndex[4], normalIndex[4];
-				int matches = sscanf_s(currentLine.c_str(), " f %d/%d/%d %d/%d/%d %d/%d/%d\n", &verticesIndex[0], &textureIndex[0], &normalIndex[0], &verticesIndex[1], &textureIndex[1], &normalIndex[1], &verticesIndex[2], &textureIndex[2], &normalIndex[2]);
+				int matches = sscanf_s(currentLine.c_str(), " f %d/%d/%d %d/%d/%d %d/%d/%d %d/%d/%d", &verticesIndex[0], &textureIndex[0], &normalIndex[0], &verticesIndex[1], &textureIndex[1], &normalIndex[1], &verticesIndex[2], &textureIndex[2], &normalIndex[2], &verticesIndex[3], &textureIndex[3], &normalIndex[3]);
 
 				if (matches == 9) {
 					for (int i = 0; i < 3; i++) {
@@ -172,13 +172,13 @@ void init(void)
 			indices.push_back(i);
 		}
 		for (int i = 0; i < tIndices.size(); i++) {
-			int vertexIndex = tIndices[i];
-			glm::vec2 texture = tempTextures[vertexIndex - 1];
+			int textureIndex = tIndices[i];
+			glm::vec2 texture = tempTextures[textureIndex - 1];
 			textures.push_back(texture);
 		}
 		for (int i = 0; i < nIndices.size(); i++) {
-			int vertexIndex = nIndices[i];
-			glm::vec3 normal = tempNormals[vertexIndex - 1];
+			int normalIndex = nIndices[i];
+			glm::vec3 normal = tempNormals[normalIndex - 1];
 			normals.push_back(normal);
 		}
 		file.close();
@@ -238,7 +238,7 @@ void init(void)
 	// load image, create texture and generate mipmaps
 	GLint width, height, nrChannels;
 	stbi_set_flip_vertically_on_load(false); // tell stb_image.h to flip loaded texture's on the y-axis.
-	unsigned char* data = stbi_load("media/Texture.png", &width, &height, &nrChannels, 0);
+	unsigned char* data = stbi_load("Media/Creeper-obj/Texture.png", &width, &height, &nrChannels, 0);
 	if (data)
 	{
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
