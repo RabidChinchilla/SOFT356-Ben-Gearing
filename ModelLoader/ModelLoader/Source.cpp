@@ -178,6 +178,7 @@ void init(void)
 			}
 
 		}
+		//associating face data with vertex data
 		for (int i = 0; i < vIndices.size(); i++) {
 			int vertexIndex = vIndices[i];
 			glm::vec3 vertex = tempVertices[vertexIndex - 1];
@@ -360,7 +361,7 @@ main(int argc, char** argv)
 	while (!glfwWindowShouldClose(window))
 	{
 		// uncomment to draw only wireframe 
-		// glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
 		display(timer);
 		glfwSwapBuffers(window);
