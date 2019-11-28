@@ -350,7 +350,7 @@ int main(int argc, char** argv)
 {
 	glfwInit();
 
-	GLFWwindow* window = glfwCreateWindow(800, 600, "Shaded Cube", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(850, 700, "Model Loader", NULL, NULL); //orignal values were 800, 600
 
 	glfwMakeContextCurrent(window);
 	glewInit();
