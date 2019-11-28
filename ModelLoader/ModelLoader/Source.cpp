@@ -201,6 +201,8 @@ void init(void)
 		cout << "File not found";
 	}
 
+	//feeding VAO's into buffers
+
 	glGenBuffers(NumBuffers, Buffers);
 
 	glBindBuffer(GL_ARRAY_BUFFER, Buffers[Triangles]);
@@ -301,8 +303,6 @@ void init(void)
 	glEnableVertexAttribArray(Normals);
 }
 
-//This displays the model in the model loader
-//===============================================
 void display(GLfloat delta)
 {
 	static const float black[] = { 0.0f, 0.0f, 0.0f, 0.0f };
@@ -317,12 +317,12 @@ void display(GLfloat delta)
 	// creating the model matrix
 	glm::mat4 model = glm::mat4(1.0f);
 	model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
-	model = glm::rotate(model, glm::radians(delta), glm::vec3(1.0f, 0.0f, 0.0f));
+	model = glm::rotate(model, glm::radians(delta), glm::vec3(0.5f, 0.2f, 0.3f));
 
 
 	// creating the view matrix
 	glm::mat4 view = glm::mat4(1.0f);
-	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -4.0f));
+	view = glm::translate(view, glm::vec3(0.3f, -0.6f, -5.0f)); // 1st changes horizontal position, 2nd changes vertical and 3rd changes z position
 
 	// creating the projection matrix
 	glm::mat4 projection = glm::perspective(45.0f, 4.0f / 3, 0.1f, 20.0f);
@@ -346,8 +346,7 @@ void display(GLfloat delta)
 	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 }
 
-int
-main(int argc, char** argv)
+int main(int argc, char** argv)
 {
 	glfwInit();
 
