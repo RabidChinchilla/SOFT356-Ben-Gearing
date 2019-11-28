@@ -43,8 +43,8 @@ main()
 	vec3 R = reflect(-L,N);
 
 	// added specular and diffuse contributions to the colour 
-	vec3 diffuse = max(0.0, dot(N,L)) * dLight;
-	vec3 specular = pow(max(dot(R,V), 0.0), sShine) * sLight;
+	vec3 diffuse = max(0.2, dot(N,L)) * dLight;
+	vec3 specular = pow(max(dot(R,V), 0.5), sShine) * sLight;
 
 	fragColour =  (ambient + vec4(diffuse,1.0) + vec4(specular,1.0) ) * vColour;
 
