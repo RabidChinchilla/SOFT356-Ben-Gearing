@@ -26,7 +26,6 @@ using namespace std;
 
 enum VAO_IDs { Object, NumVAOs = 1 };
 enum Buffer_IDs { Triangles, Colours, Normals, Textures, Indices, NumBuffers = 5 };
-//enum Attrib_IDs { vPosition = 0, cPosition = 1, tPosition = 2 };
 
 GLuint VAOs[NumVAOs];
 GLuint Buffers[NumBuffers];
@@ -40,8 +39,8 @@ const char* path = "Media/Creeper.obj";
 
 // Instantiates the classes/methods
 //===========================================
-void init();
-void display();
+//void init();
+//void display();
 //bool loadOBJ(const char* path);
 
 #define BUFFER_OFFSET(a) ((void*)(a))
@@ -55,13 +54,13 @@ void init(void)
 
 	ShaderInfo shaders[] =
 	{
-		{ GL_VERTEX_SHADER, "media/triangles.vert"},
-		{ GL_FRAGMENT_SHADER, "media/triangles.frag"},
+		{ GL_VERTEX_SHADER, "Media/triangles.vert"},
+		{ GL_FRAGMENT_SHADER, "Media/triangles.frag"},
 		{ GL_NONE, NULL}
 	};
 
-	GLuint program = LoadShaders(shaders);
-	glUseProgram(program);
+	shader = LoadShaders(shaders);
+	glUseProgram(shader);
 
 	//Lighting
 	// ambient light
@@ -124,6 +123,7 @@ void init(void)
 	ifstream file(path);
 
 	if (file.is_open()) {
+		//cout << "File open";
 		while (getline(file, currentLine)) {
 			if (currentLine.at(0) == 'v') {
 				char prefixOfValues[3]; //gets the letters that are in front of the numbers in the file
@@ -153,10 +153,23 @@ void init(void)
 					}
 				}
 				else if (matches == 12) {
-					for (int i = 0; i < 4; i++) {
-						vIndices.push_back(verticesIndex[i]);
-						tIndices.push_back(textureIndex[i]);
-						nIndices.push_back(normalIndex[i]);
+					for (int i = 0; i < 6; i++) {
+						//convert squares to triangles
+						if (i < 4) {
+							vIndices.push_back(verticesIndex[i]);
+							tIndices.push_back(textureIndex[i]);
+							nIndices.push_back(normalIndex[i]);
+						}
+						else if (i == 4) {
+							vIndices.push_back(verticesIndex[0]);
+							tIndices.push_back(textureIndex[0]);
+							nIndices.push_back(normalIndex[0]);
+						}
+						else {
+							vIndices.push_back(verticesIndex[2]);
+							tIndices.push_back(textureIndex[2]);
+							nIndices.push_back(normalIndex[2]);
+						}
 					}
 				}
 				else {
@@ -331,72 +344,6 @@ void display(GLfloat delta)
 	glBindTexture(GL_TEXTURE_2D, texture1);
 	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 }
-
-//This collects the data from the model to use for loading the model into the scene
-//=====================================================================================
-//bool loadOBJ(const char* path)
-//{
-//	FILE* file = fopen(path, "r");
-//	if (file == NULL)
-//	{
-//		cout << "Impossible to open file!" << endl;
-//		return false;
-//	}
-//
-//	while (1)
-//	{
-//		char lineHeader[128] = { 0 };
-//		int res = fscanf(file, "%s", lineHeader);
-//		if (res == EOF)
-//		{
-//			break;
-//		}
-//		else if (strcmp(lineHeader, "v") == 0)
-//		{
-//			glm::vec3 vertex;
-//			fscanf_s(file, "%f %f %f\n", &vertex.x, &vertex.y, &vertex.z);
-//			temp_vertices.push_back(vertex);
-//		}
-//		else if (strcmp(lineHeader, "vt") == 0)
-//		{
-//			glm::vec2 uv;
-//			fscanf_s(file, "%f %f\n", &uv.x, &uv.y);
-//			//temp_uvs.push_back(uv);
-//		}
-//		else if (strcmp(lineHeader, "vn") == 0)
-//		{
-//			glm::vec3 normal;
-//			fscanf_s(file, "%f %f %f\n", &normal.x, &normal.y, &normal.z);
-//			//temp_normals.push_back(normal);
-//		}
-//		else if (strcmp(lineHeader, "f") == 0)
-//		{
-//			unsigned int vertexIndex[4], uvIndex[4], normalIndex[4];
-//			int matches = fscanf(file, "%d%d%d %d%d%d %d%d%d %d%d%d\n", &vertexIndex[0], &uvIndex[0], &normalIndex[0], &vertexIndex[1], &uvIndex[1], &normalIndex[1], &vertexIndex[2], &uvIndex[2], &normalIndex[2], &vertexIndex[3], &uvIndex[3], &normalIndex[3]);
-//			if (matches == 12)
-//			{
-//
-//			}
-//			else if (matches == 9)
-//			{
-//
-//			}
-//		}
-//	}
-//
-//	for (unsigned int i = 0; i < vertexIndices.size(); i++)
-//	{
-//		unsigned int vertexIndex = vertexIndices[i];
-//		unsigned int uvIndex = uvIndices[i];
-//		unsigned int normalIndex = normalIndices[i];
-//
-//		//glm::vec3 vertex = 
-//		//glm::vec2 uv = 
-//		//glm::vec3 normal =
-//	}
-//	fclose(file);
-//	return true;
-//}
 
 int
 main(int argc, char** argv)
