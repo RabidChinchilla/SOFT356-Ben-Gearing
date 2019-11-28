@@ -311,8 +311,8 @@ void display(GLfloat delta)
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	// bind textures on corresponding texture units
-	glFrontFace(GL_CW);
-	glCullFace(GL_BACK);
+	//glFrontFace(GL_CW);
+	//glCullFace(GL_BACK); //commented out because it caused the model to be see through
 	glEnable(GL_CULL_FACE);
 	// creating the model matrix
 	glm::mat4 model = glm::mat4(1.0f);
