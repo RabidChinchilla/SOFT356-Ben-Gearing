@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <sstream>
 
 // OpenGL Related Libraries
 #include <GL/glew.h>
@@ -18,8 +19,9 @@ using namespace glm;
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
-
 #include "LoadShaders.h"
+using namespace std;
+
 
 
 enum VAO_IDs { Object, NumVAOs = 1 };
@@ -38,7 +40,7 @@ std::vector<glm::vec3>temp_normals;
 
 //const GLuint NumVertices = 36;
 
-const char* path = "model/Creeper.obj";
+const char* path = "Media/Creeper.obj";
 
 // Instantiates the classes/methods
 //===========================================
@@ -69,7 +71,48 @@ void init(void)
 	std::vector<glm::vec2> uvs;
 	std::vector<glm::vec3> normals;
 
+	GLfloat  colours[][4] = {
+		{ 1.0f, 0.0f, 0.0f, 1.0f }, { 1.0f, 0.0f, 0.0f, 1.0f }, { 1.0f, 0.0f, 0.0f, 1.0f },
+		{ 1.0f, 0.0f, 0.0f, 1.0f }, { 1.0f, 0.0f, 0.0f, 1.0f }, { 1.0f, 0.0f, 0.0f, 1.0f },
+
+		{ 0.0f, 1.0f, 0.0f, 1.0f }, { 0.0f, 1.0f, 0.0f, 1.0f }, { 0.0f, 1.0f, 0.0f, 1.0f },
+		{ 0.0f, 1.0f, 0.0f, 1.0f }, { 0.0f, 1.0f, 0.0f, 1.0f }, { 0.0f, 1.0f, 0.0f, 1.0f },
+
+		{ 0.0f, 0.0f, 1.0f, 1.0f }, { 0.0f, 0.0f, 1.0f, 1.0f }, { 0.0f, 0.0f, 1.0f, 1.0f },
+		{ 0.0f, 0.0f, 1.0f, 1.0f }, { 0.0f, 0.0f, 1.0f, 1.0f }, { 0.0f, 0.0f, 1.0f, 1.0f },
+
+		{ 1.0f, 0.0f, 1.0f, 1.0f }, { 1.0f, 0.0f, 1.0f, 1.0f }, { 1.0f, 0.0f, 1.0f, 1.0f },
+		{ 1.0f, 0.0f, 1.0f, 1.0f }, { 1.0f, 0.0f, 1.0f, 1.0f }, { 1.0f, 0.0f, 1.0f, 1.0f },
+
+		{ 1.0f, 1.0f, 0.0f, 1.0f }, { 1.0f, 1.0f, 0.0f, 1.0f }, { 1.0f, 1.0f, 0.0f, 1.0f },
+		{ 1.0f, 1.0f, 0.0f, 1.0f }, { 1.0f, 1.0f, 0.0f, 1.0f }, { 1.0f, 1.0f, 0.0f, 1.0f },
+
+		{ 0.0f, 1.0f, 1.0f, 1.0f }, { 0.0f, 1.0f, 1.0f, 1.0f }, { 0.0f, 1.0f, 1.0f, 1.0f },
+		{ 0.0f, 1.0f, 1.0f, 1.0f }, { 0.0f, 1.0f, 1.0f, 1.0f }, { 0.0f, 1.0f, 1.0f, 1.0f },
+
+	};
+
 	loadOBJ(path);
+
+	//file parsing
+	vector<glm::vec3> tempVertices, tempNormals;
+	vector<int> vIndices, tIndices, nIndices, indices;
+
+	string currentLine;
+	ifstream file(path);
+
+	if (file.is_open()) {
+		while (getline(file, currentLine)) {
+			if (currentLine.at(0) == 'v') {
+				glm::vec3 vertex;
+				fscanf(file, "%f %f %f\n", &vertex.x, &vertex.y, &vertex.z);
+				tempVertices.push_back(vertex);
+			}
+		}
+	}
+	else {
+		cout << "File not found";
+	}
 
 	GLuint vertexBuffer;
 	glGenBuffers(1, &vertexBuffer);
