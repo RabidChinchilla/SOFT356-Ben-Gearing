@@ -33,10 +33,6 @@ GLuint Buffers[NumBuffers];
 
 GLuint shader;
 
-std::vector<unsigned int> vertexIndices, uvIndices, normalIndices;
-std::vector<glm::vec3>temp_vertices;
-std::vector<glm::vec2>temp_uvs;
-std::vector<glm::vec3>temp_normals;
 
 //const GLuint NumVertices = 36;
 
@@ -67,9 +63,7 @@ void init(void)
 	GLuint program = LoadShaders(shaders);
 	glUseProgram(program);
 
-	std::vector<glm::vec3> vertices;
-	std::vector<glm::vec2> uvs;
-	std::vector<glm::vec3> normals;
+	
 
 	GLfloat  colours[][4] = {
 		{ 1.0f, 0.0f, 0.0f, 1.0f }, { 1.0f, 0.0f, 0.0f, 1.0f }, { 1.0f, 0.0f, 0.0f, 1.0f },
@@ -95,7 +89,11 @@ void init(void)
 	loadOBJ(path);
 
 	//file parsing
+	vector<glm::vec3> vertices;
+	vector<glm::vec2> textures;
+	vector<glm::vec3> normals;
 	vector<glm::vec3> tempVertices, tempNormals;
+	vector<glm::vec2> tempTextures;
 	vector<int> vIndices, tIndices, nIndices, indices;
 
 	string currentLine;
@@ -104,10 +102,60 @@ void init(void)
 	if (file.is_open()) {
 		while (getline(file, currentLine)) {
 			if (currentLine.at(0) == 'v') {
+				char prefixOfValues[3]; //gets the letters that are in front of the numbers in the file
 				glm::vec3 vertex;
-				fscanf(file, "%f %f %f\n", &vertex.x, &vertex.y, &vertex.z);
-				tempVertices.push_back(vertex);
+				sscanf_s(currentLine.c_str(), "%s %f %f %f", prefixOfValues, sizeof(prefixOfValues), &vertex.x, &vertex.y, &vertex.z);
+
+				if (strcmp(prefixOfValues, "v") == 0) {
+
+					tempVertices.push_back(vertex);
+				}
+				else if (strcmp(prefixOfValues, "vt") == 0) {
+					tempTextures.push_back(vertex);
+				}
+				else if (strcmp(prefixOfValues, "vn") == 0) {
+					tempNormals.push_back(vertex);
+				}
 			}
+			else if (currentLine.at(0) == 'f') {
+				int verticesIndex[4], textureIndex[4], normalIndex[4];
+				int matches = sscanf_s(currentLine.c_str(), " f %d/%d/%d %d/%d/%d %d/%d/%d\n", &verticesIndex[0], &textureIndex[0], &normalIndex[0], &verticesIndex[1], &textureIndex[1], &normalIndex[1], &verticesIndex[2], &textureIndex[2], &normalIndex[2]);
+
+				if (matches == 9) {
+					for (int i = 0; i < 3; i++) {
+						vIndices.push_back(verticesIndex[i]);
+						tIndices.push_back(textureIndex[i]);
+						nIndices.push_back(normalIndex[i]);
+					}
+				}
+				else if (matches == 12) {
+					for (int i = 0; i < 4; i++) {
+						vIndices.push_back(verticesIndex[i]);
+						tIndices.push_back(textureIndex[i]);
+						nIndices.push_back(normalIndex[i]);
+					}
+				}
+				else {
+					cout << "File doesn't match the format";
+				}
+			}
+
+		}
+		for (int i = 0; i < vIndices.size(); i++) {
+			int vertexIndex = vIndices[i];
+			glm::vec3 vertex = tempVertices[vertexIndex - 1];
+			vertices.push_back(vertex);
+			indices.push_back(i);
+		}
+		for (int i = 0; i < tIndices.size(); i++) {
+			int vertexIndex = tIndices[i];
+			glm::vec2 texture = tempTextures[vertexIndex - 1];
+			textures.push_back(texture);
+		}
+		for (int i = 0; i < nIndices.size(); i++) {
+			int vertexIndex = nIndices[i];
+			glm::vec3 normal = tempNormals[vertexIndex - 1];
+			normals.push_back(normal);
 		}
 	}
 	else {
