@@ -3,6 +3,7 @@
 SOFT356 Markdown Report
 
 Version: Visual studio 2019
+uses NupenGL.core package and GLM package
 
 To work the program you make sure there are no errors in the files caused by missing packages, if there is an error uninstall and reinstall the glm package by going into tools --> NuGet Package Manager --> Manage NuGet packages for solution and browse for glm, then in the codes current state you should run the solution by clicking the green run arrow at the top of the program or hitting F5 then you should see the model loader open and display a cube with the Minecraft slime texture.
 
