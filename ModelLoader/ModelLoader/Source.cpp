@@ -34,7 +34,8 @@ GLuint shader;
 
 int numberOfVertices;
 
-const char* path = "Media/Creeper.obj";
+const char* path = "Media\\Creeper-obj\\Creeper.obj";
+
 
 
 #define BUFFER_OFFSET(a) ((void*)(a))
@@ -101,6 +102,7 @@ void init(void)
 
 	};
 
+
 	//file parsing
 	vector<glm::vec3> vertices;
 	vector<glm::vec2> textures;
@@ -113,7 +115,7 @@ void init(void)
 	ifstream file(path);
 
 	if (file.is_open()) {
-		//cout << "File open";
+		cout << "File open";
 		while (getline(file, currentLine)) {
 			if (currentLine.at(0) == 'v') {
 				char prefixOfValues[3]; //gets the letters that are in front of the numbers in the file
