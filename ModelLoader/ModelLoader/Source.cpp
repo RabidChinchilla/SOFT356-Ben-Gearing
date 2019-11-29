@@ -32,21 +32,13 @@ GLuint Buffers[NumBuffers];
 GLuint texture1;
 GLuint shader;
 
-
-//const GLuint NumVertices = 36;
+int numberOfVertices;
 
 const char* path = "Media/Creeper.obj";
 
-// Instantiates the classes/methods
-//===========================================
-//void init();
-//void display();
-//bool loadOBJ(const char* path);
 
 #define BUFFER_OFFSET(a) ((void*)(a))
 
-// Instantiates the shaders and creates the info needed to display the model in the model loader
-//========================================================================================================
 void init(void)
 {
 	glGenVertexArrays(NumVAOs, VAOs);
@@ -109,8 +101,6 @@ void init(void)
 
 	};
 
-	//loadOBJ(path);
-
 	//file parsing
 	vector<glm::vec3> vertices;
 	vector<glm::vec2> textures;
@@ -128,7 +118,7 @@ void init(void)
 			if (currentLine.at(0) == 'v') {
 				char prefixOfValues[3]; //gets the letters that are in front of the numbers in the file
 				glm::vec3 vertex;
-				sscanf_s(currentLine.c_str(), "%s %f %f %f", prefixOfValues, sizeof(prefixOfValues), &vertex.x, &vertex.y, &vertex.z);
+				sscanf_s(currentLine.c_str(), "%s %f %f %f\n", prefixOfValues, sizeof(prefixOfValues), &vertex.x, &vertex.y, &vertex.z);
 
 				if (strcmp(prefixOfValues, "v") == 0) {
 
@@ -143,7 +133,7 @@ void init(void)
 			}
 			else if (currentLine.at(0) == 'f') {
 				int verticesIndex[4], textureIndex[4], normalIndex[4];
-				int matches = sscanf_s(currentLine.c_str(), " f %d/%d/%d %d/%d/%d %d/%d/%d %d/%d/%d", &verticesIndex[0], &textureIndex[0], &normalIndex[0], &verticesIndex[1], &textureIndex[1], &normalIndex[1], &verticesIndex[2], &textureIndex[2], &normalIndex[2], &verticesIndex[3], &textureIndex[3], &normalIndex[3]);
+				int matches = sscanf_s(currentLine.c_str(), "f %d/%d/%d %d/%d/%d %d/%d/%d %d/%d/%d\n", &verticesIndex[0], &textureIndex[0], &normalIndex[0], &verticesIndex[1], &textureIndex[1], &normalIndex[1], &verticesIndex[2], &textureIndex[2], &normalIndex[2], &verticesIndex[3], &textureIndex[3], &normalIndex[3]);
 
 				if (matches == 9) {
 					for (int i = 0; i < 3; i++) {
@@ -195,6 +185,7 @@ void init(void)
 			glm::vec3 normal = tempNormals[normalIndex - 1];
 			normals.push_back(normal);
 		}
+		numberOfVertices = vertices.size();
 		file.close();
 	}
 	else {
@@ -213,15 +204,13 @@ void init(void)
 
 
 
-	glVertexAttribPointer(Triangles, 3, GL_FLOAT,
-		GL_FALSE, 0, BUFFER_OFFSET(0));
+	glVertexAttribPointer(Triangles, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
 
 	//Colour Binding
 	glBindBuffer(GL_ARRAY_BUFFER, Buffers[Colours]);
 	glBufferStorage(GL_ARRAY_BUFFER, sizeof(colours), colours, 0);
 
-	glVertexAttribPointer(Colours, 4, GL_FLOAT,
-		GL_FALSE, 0, BUFFER_OFFSET(0));
+	glVertexAttribPointer(Colours, 4, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
 
 
 	//Colour Binding
@@ -229,14 +218,12 @@ void init(void)
 	glBufferStorage(GL_ARRAY_BUFFER, normals.size() * sizeof(glm::vec3), &normals[0], 0);
 
 
-	glVertexAttribPointer(Normals, 3, GL_FLOAT,
-		GL_FALSE, 0, BUFFER_OFFSET(0));
+	glVertexAttribPointer(Normals, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
 
 	//Texture Binding
 	glBindBuffer(GL_ARRAY_BUFFER, Buffers[Textures]);
 	glBufferData(GL_ARRAY_BUFFER, textures.size() * sizeof(glm::vec2), &textures[0], GL_STATIC_DRAW);
-	glVertexAttribPointer(Textures, 2, GL_FLOAT,
-		GL_FALSE, 0, BUFFER_OFFSET(0));
+	glVertexAttribPointer(Textures, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
 
 	// load and create a texture 
 	// -------------------------
@@ -343,7 +330,7 @@ void display(GLfloat delta)
 
 	glBindVertexArray(VAOs[Object]);
 	glBindTexture(GL_TEXTURE_2D, texture1);
-	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, numberOfVertices, GL_UNSIGNED_INT, 0);
 }
 
 int main(int argc, char** argv)
