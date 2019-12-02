@@ -11,7 +11,17 @@
 
 ### File Contents
 
+The project file consists of 4 main files; 
+* source.cpp
+* LoadShaders.cpp
+* LoadShaders.h
+* stb_image.h
 
+The source.cpp file is the core file that contains a majority of the code required to load the models and textures, it also creates the display window and brings up the console for the user.
+
+LoadShaders.cpp condenses all the shading code so it an be easily called by the source.cpp file.
+
+Loadshaders.h and stb_image.h are header files that are called early in the source.cpp file and contain complex code needed by the main file but would take up too much space in that file when they could easily be put into headers and called from outside the main file.
 
 ### Before Runtime
 
