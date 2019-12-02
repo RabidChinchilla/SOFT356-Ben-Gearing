@@ -25,6 +25,8 @@ Loadshaders.h and stb_image.h are header files that are called early in the sour
 
 ### Before Runtime
 
+Firstly make sure that the Creeper file inside Media/Creeper-obj/ is a .obj file instead of a .fbx file, you can check this in the project files side bar inside the visual studio IDE. If the file is not a .obj file redownload the test objects file from the dle and place those objects into the Media file.
+
 Before running the program make sure that all the packages are installed correctly and no errors are being shown in the code.
 
 If errors are being shown under the GLM imports go into tools --> NuGet Package Manager --> Manage NuGet packages and find the glm package, uninstall this package and then install it again by searching for it under the browse tab.
