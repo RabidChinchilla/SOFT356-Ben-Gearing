@@ -140,6 +140,7 @@
   <ItemGroup>
     <Object Include="Media\Creeper-obj\Creeper.obj">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <DeploymentContent>true</DeploymentContent>
     </Object>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

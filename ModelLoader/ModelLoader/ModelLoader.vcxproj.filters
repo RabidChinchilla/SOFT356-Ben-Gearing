@@ -43,6 +43,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Object Include="Media\Creeper-obj\Creeper.obj" />
+    <Object Include="Media\Creeper-obj\Creeper.obj">
+      <Filter>Resource Files</Filter>
+    </Object>
   </ItemGroup>
 </Project>
