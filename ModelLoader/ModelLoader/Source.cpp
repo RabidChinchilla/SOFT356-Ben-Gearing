@@ -34,13 +34,10 @@ GLuint shader;
 
 int numberOfVertices;
 
-const char* path = "Media\\Creeper-obj\\Creeper.obj";
-
-
 
 #define BUFFER_OFFSET(a) ((void*)(a))
 
-void init(void)
+void init(string fileToOpen)
 {
 	glGenVertexArrays(NumVAOs, VAOs);
 	glBindVertexArray(VAOs[Object]);
@@ -102,6 +99,7 @@ void init(void)
 
 	};
 
+	string path;
 
 	//file parsing
 	vector<glm::vec3> vertices;
@@ -110,6 +108,8 @@ void init(void)
 	vector<glm::vec3> tempVertices, tempNormals;
 	vector<glm::vec2> tempTextures;
 	vector<int> vIndices, tIndices, nIndices, indices;
+
+	path = "Media/Creeper-obj/" + fileToOpen + ".obj";
 
 	string currentLine;
 	ifstream file(path);
@@ -344,7 +344,12 @@ int main(int argc, char** argv)
 	glfwMakeContextCurrent(window);
 	glewInit();
 
-	init();
+	string fileToOpen;
+	cout << "Please enter the Object you want to open: ";
+	cin >> fileToOpen;
+	cout << fileToOpen << ".obj is the file you're opening\n";
+
+	init(fileToOpen);
 	GLfloat timer = 0.0f;
 	while (!glfwWindowShouldClose(window))
 	{
