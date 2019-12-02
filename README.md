@@ -1,12 +1,30 @@
 # SOFT356-Ben-Gearing
 
-SOFT356 Markdown Report
+## SOFT356 Markdown Report
 
-Version: Visual studio 2019
-uses NupenGL.core package and GLM package
+## Version: Visual studio 2019
 
-To work the program you make sure there are no errors in the files caused by missing packages, if there is an error uninstall and reinstall the glm package by going into tools --> NuGet Package Manager --> Manage NuGet packages for solution and browse for glm, then in the codes current state you should run the solution by clicking the green run arrow at the top of the program or hitting F5 then you should see the model loader open and display a cube with the Minecraft slime texture.
+### Packages used
 
-All the header files are not to be edited or removed since they are called in the main source.cpp file and LoadShaders.cpp file. The source.cpp file is the main file where the file parsing and display function is located, the LoadShaders.cpp file is called in this file as well since the shaders applied in the source.cpp file as well.
+* Nupengl
+* GLM
 
-This is a very basic model loader that uses a hardcoded file path, if you wish to change the file change the path variable at the top of the source.cpp, but the loader will not be able to load multiple objects or textures
+### File Contents
+
+
+
+### Before Runtime
+
+Before running the program make sure that all the packages are installed correctly and no errors are being shown in the code.
+
+If errors are being shown under the GLM imports go into tools --> NuGet Package Manager --> Manage NuGet packages and find the glm package, uninstall this package and then install it again by searching for it under the browse tab.
+
+### Running the program
+
+To run the program either click the green arrow at the top of the IDE that says Local Windows Debugger or by hitting F5 on the keyboard.
+
+### During Runtime
+
+During the run time of the program all you have to do is enter the name of the file you want to open into the console, this project cannot load multiple objects in its current state and can only load the Creeper file and textures.
+
+When you get the prompt **"Please enter the Object you want to open:"** all you have to do is type in **Creeper** and the program will do the rest to load the model in the display window. There is no need to add .obj to the end of your input because the code handles it for you. The code is very simple and will show you a rotating version of the model with the texture applied, as of now you cannot move the camera or model.
