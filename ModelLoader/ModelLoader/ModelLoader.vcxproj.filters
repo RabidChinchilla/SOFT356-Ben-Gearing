@@ -23,7 +23,6 @@
     </None>
     <None Include="packages.config" />
     <None Include="Media\Creeper.mtl" />
-    <None Include="Media\Creeper-obj\Creeper.mtl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stb_image.h">
@@ -49,11 +48,5 @@
   </ItemGroup>
   <ItemGroup>
     <Object Include="Media\Creeper.obj" />
-    <Object Include="Media\Creeper-obj\Creeper.obj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Media\Creeper-obj\Texture.png">
-      <Filter>Resource Files</Filter>
-    </Image>
   </ItemGroup>
 </Project>

@@ -1,1 +1,8 @@
-﻿Media\Creeper-obj\Creeper.obj : fatal error LNK1107: invalid or corrupt file: cannot read at 0x4AA
+﻿  Source.cpp
+C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(345,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(478,35): warning C4477: 'sscanf_s' : format string '%s' requires an argument of type 'unsigned int', but variadic argument 2 has type 'size_t'
+C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(478,35): message : this argument is used as a buffer size
+C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(545,37): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(559,20): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(625,17): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+Media\Creeper.obj : fatal error LNK1107: invalid or corrupt file: cannot read at 0x4AA

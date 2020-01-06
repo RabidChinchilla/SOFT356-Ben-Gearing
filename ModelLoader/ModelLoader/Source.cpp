@@ -1,24 +1,21 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "GL/glew.h"
+#include "GL/freeglut.h"
+#include "GLFW/glfw3.h"
+#include "LoadShaders.h"
+#include <glm/glm.hpp> //includes GLM
+#include <glm/ext/matrix_transform.hpp> // GLM: translate, rotate
+#include <glm/ext/matrix_clip_space.hpp> // GLM: perspective and ortho 
+#include <glm/gtc/type_ptr.hpp> // GLM: access to the value_ptr
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+#include<sstream>
+#include<string>
+#include<fstream>
 #include <iostream>
-#include <string>
-#include <fstream>
-#include <istream>
-#include <sstream>
-#include <vector>
-#include <cstdio>
-#include <regex>
+#include<vector>
+#include<algorithm>
 
-// OpenGL Related Libraries
-#include <GL/glew.h>
-#include <GL/freeglut.h>
-#include <GLFW/glfw3.h>
-
-// GLM Related Libraries
-#include <glm/glm.hpp>
-#include <glm/ext/matrix_transform.hpp>
-#include <glm/ext/matrix_clip_space.hpp>
-#include <glm/gtc/type_ptr.hpp>
+using namespace std;
 using namespace glm;
 
 #define STB_IMAGE_IMPLEMENTATION
@@ -466,7 +463,8 @@ void loadModel(string fileToOpen) {
 	vector<glm::vec2> tempTextures;
 	vector<int> vIndices, tIndices, nIndices, indices;
 
-	path = "Media/Creeper-obj/" + fileToOpen + ".obj";
+	//path = "Media/Creeper-obj/" + fileToOpen + ".obj";
+	path = "Media/" + fileToOpen + ".obj";
 
 	string currentLine;
 	ifstream file(path);
