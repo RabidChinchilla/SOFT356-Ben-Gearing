@@ -1,1 +1,1 @@
-﻿LINK : fatal error LNK1104: cannot open file 'Media\Creeper-obj\Creeper.obj'
+﻿Media\Creeper-obj\Creeper.obj : fatal error LNK1107: invalid or corrupt file: cannot read at 0x4AA
