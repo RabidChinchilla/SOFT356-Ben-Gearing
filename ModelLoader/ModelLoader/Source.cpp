@@ -6,8 +6,6 @@
 #include <glm/ext/matrix_transform.hpp> // GLM: translate, rotate
 #include <glm/ext/matrix_clip_space.hpp> // GLM: perspective and ortho 
 #include <glm/gtc/type_ptr.hpp> // GLM: access to the value_ptr
-#define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
 #include<sstream>
 #include<string>
 #include<fstream>
@@ -15,7 +13,6 @@
 #include<vector>
 #include<algorithm>
 
-using namespace std;
 using namespace glm;
 
 #define STB_IMAGE_IMPLEMENTATION
@@ -26,8 +23,6 @@ using namespace std;
 #include <GL/glut.h>
 
 #define BUFFER_OFFSET(a) ((void*)(a))
-
-
 
 string path; //String to hold user input for file address
 
@@ -41,24 +36,23 @@ vector<string> tempSplit; //Passed into when parsing face values
 
 enum VAO_IDs { Object, NumVAOs = 1 };
 enum Buffer_IDs { Triangles, Colours, Normals, Textures, Indices, NumBuffers = 5 };
-enum Attrib_IDs { vPosition = 0, aTexCoord = 1, vNormals = 2 };
+//enum Attrib_IDs { vPosition = 0, aTexCoord = 1, vNormals = 2 };
 
 GLuint VAOs[NumVAOs];
 GLuint Buffers[NumBuffers];
 GLuint texture1;
+
 GLuint shader;
 
 int numberOfVertices;
 
-//ADDED AS PART OF CW2:
-GLfloat rotateVel; //Used to define object rotation velocity
-GLfloat objScale = 1.0f; //Used to define scale of rendered object
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void processInput(GLFWwindow* window);
-void loadModel(string fileToOpen);
+void loadModel(string fileToOpen, vector<GLfloat>& outVertices, vector<GLfloat>& outTextures, vector<GLfloat>& outNormals);
+void loadMTLFile(string file_name, vector<GLfloat>& colour, vector<GLfloat>& diffuse, vector<GLfloat>& specular, GLfloat& ns, string& texture_name);
 
 // settings
 const unsigned int SCR_WIDTH = 800;
@@ -99,7 +93,7 @@ void init(vector<GLfloat>& vertices, vector<GLfloat>& textures, vector<GLfloat>&
 
 	//Lighting
 	// ambient light
-	glm::vec4 ambient = glm::vec4(0.1f, 0.1f, 0.1f, 1.0f);
+	glm::vec4 ambient = glm::vec4(colour[0], colour[1], colour[2], colour[3]);
 	//adding the Uniform to the shader
 	GLuint aLoc = glGetUniformLocation(shader, "ambient");
 	glUniform4fv(aLoc, 1, glm::value_ptr(ambient));
@@ -111,12 +105,12 @@ void init(vector<GLfloat>& vertices, vector<GLfloat>& textures, vector<GLfloat>&
 
 
 	// diffuse light
-	glm::vec3 diffuseLight = glm::vec3(0.5f, 0.2f, 0.7f);
+	glm::vec3 diffuseLight = glm::vec3(diffuse[0], diffuse[1], diffuse[2]);
 	GLuint dLightLoc = glGetUniformLocation(shader, "dLight");
 	glUniform3fv(dLightLoc, 1, glm::value_ptr(diffuseLight));
 
 	// specular light
-	glm::vec3 specularLight = glm::vec3(0.7f);
+	glm::vec3 specularLight = glm::vec3(specular[0], specular[1], specular[2]);
 	GLfloat shininess = 256; //128 is max value
 	GLuint sLightLoc = glGetUniformLocation(shader, "sLight");
 	GLuint sShineLoc = glGetUniformLocation(shader, "sShine");
@@ -244,17 +238,10 @@ void init(vector<GLfloat>& vertices, vector<GLfloat>& textures, vector<GLfloat>&
 	glGenBuffers(NumBuffers, Buffers);
 
 	glBindBuffer(GL_ARRAY_BUFFER, Buffers[Triangles]);
-	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &vertices[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(GLfloat), vertices.data(), GL_STATIC_DRAW);
 
 	glVertexAttribPointer(Triangles, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, Buffers[Indices]);
-	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(int), &indices[0], GL_STATIC_DRAW);
-
-
-
-
-	glVertexAttribPointer(Triangles, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
 
 	//Colour Binding
 	glBindBuffer(GL_ARRAY_BUFFER, Buffers[Colours]);
@@ -265,14 +252,14 @@ void init(vector<GLfloat>& vertices, vector<GLfloat>& textures, vector<GLfloat>&
 
 	//Normal Binding
 	glBindBuffer(GL_ARRAY_BUFFER, Buffers[Normals]);
-	glBufferStorage(GL_ARRAY_BUFFER, normals.size() * sizeof(glm::vec3), &normals[0], 0);
+	glBufferStorage(GL_ARRAY_BUFFER, normals.size() * sizeof(GLfloat), normals.data(), 0);
 
 
 	glVertexAttribPointer(Normals, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
 
 	//Texture Binding
 	glBindBuffer(GL_ARRAY_BUFFER, Buffers[Textures]);
-	glBufferData(GL_ARRAY_BUFFER, textures.size() * sizeof(glm::vec2), &textures[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, textures.size() * sizeof(GLfloat), textures.data(), GL_STATIC_DRAW);
 	glVertexAttribPointer(Textures, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
 
 	// load and create a texture 
@@ -291,7 +278,7 @@ void init(vector<GLfloat>& vertices, vector<GLfloat>& textures, vector<GLfloat>&
 	// load image, create texture and generate mipmaps
 	GLint width, height, nrChannels;
 	stbi_set_flip_vertically_on_load(true); // tell stb_image.h to flip loaded texture's on the y-axis.
-	unsigned char* data = stbi_load("Media/Creeper-obj/Texture.png", &width, &height, &nrChannels, 0);
+	unsigned char* data = stbi_load(texture_name.c_str(), &width, &height, &nrChannels, 0);
 	if (data)
 	{
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
@@ -329,10 +316,6 @@ void init(vector<GLfloat>& vertices, vector<GLfloat>& textures, vector<GLfloat>&
 	//adding the Uniform to the shader
 	int pLoc = glGetUniformLocation(shader, "p_matrix");
 	glUniformMatrix4fv(pLoc, 1, GL_FALSE, glm::value_ptr(projection));
-
-
-
-
 
 	glEnableVertexAttribArray(Triangles);
 	glEnableVertexAttribArray(Colours);
@@ -416,52 +399,57 @@ int main(int argc, char** argv)
 	cin >> fileToOpen;
 	cout << fileToOpen << ".obj is the file you're opening\n";
 
-	loadModel(fileToOpen);
-	glfwInit();
-
-	GLFWwindow* window = glfwCreateWindow(800, 600, "Extended Model Loader CW2", NULL, NULL); // Loading Window
-
-	glfwMakeContextCurrent(window); //Making sure that can have User Input
-	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-	glfwSetCursorPosCallback(window, mouse_callback);
-	glfwSetScrollCallback(window, scroll_callback);
-
-	// tell GLFW to capture our mouse
-	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-	glewInit();
-
-	cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);	//Resetting Camera each time scene re-opens
-	cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-	cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
-
-	init(vertices, textures, normals, texture_name, colour, diffuse, specular, ns);
-	GLfloat timer = 0.0f;
-	while (!glfwWindowShouldClose(window))
+	while (true) // While loop for loading in file on name entry, Displaying, Allowing User Input
 	{
-		processInput(window);
 
-		display(timer);
-		glfwSwapBuffers(window);
-		glfwPollEvents();
-		timer += 0.1f;
+		//cin >> fileToOpen;
+		loadModel(fileToOpen, vertices, textures, normals);
+		loadMTLFile(fileToOpen, colour, diffuse, specular, ns, texture_name);
+		glfwInit();
+
+		GLFWwindow* window = glfwCreateWindow(800, 600, "Shaded Cube", NULL, NULL); // Loading Window
+
+		glfwMakeContextCurrent(window); //Making sure that can have User Input
+		glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+		glfwSetCursorPosCallback(window, mouse_callback);
+		glfwSetScrollCallback(window, scroll_callback);
+
+		// tell GLFW to capture our mouse
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+		glewInit();
+
+		cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);	//Resetting Camera each time scene re-opens
+		cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+		cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+
+		init(vertices, textures, normals, texture_name, colour, diffuse, specular, ns);
+		GLfloat timer = 0.0f;
+		while (!glfwWindowShouldClose(window))
+		{
+
+			processInput(window);
+
+			display(timer);
+			glfwSwapBuffers(window);
+			glfwPollEvents();
+			timer += 0.1f;
+
+
+		}
+
+
+		glfwDestroyWindow(window);
 
 	}
-
-	glfwDestroyWindow(window);
-
-	glfwTerminate();
 }
 
-void loadModel(string fileToOpen) {
-	//string path;
+void loadModel(string fileToOpen, vector<GLfloat>& outVertices, vector<GLfloat>& outTextures, vector<GLfloat>& outNormals) {
 
 	//file parsing
-	vector<glm::vec3> vertices;
-	vector<glm::vec2> textures;
-	vector<glm::vec3> normals;
-	vector<glm::vec3> tempVertices, tempNormals;
-	vector<glm::vec2> tempTextures;
-	vector<int> vIndices, tIndices, nIndices, indices;
+	vector<GLfloat> vertices;
+	vector<GLfloat> textures;
+	vector<GLfloat> normals;
+	vector<GLuint> vIndices, tIndices, nIndices;
 
 	//path = "Media/Creeper-obj/" + fileToOpen + ".obj";
 	path = "Media/" + fileToOpen + ".obj";
@@ -469,84 +457,176 @@ void loadModel(string fileToOpen) {
 	string currentLine;
 	ifstream file(path);
 
-	if (file.is_open()) {
-		cout << "File open";
-		while (getline(file, currentLine)) {
-			if (currentLine.at(0) == 'v') {
-				char prefixOfValues[3]; //gets the letters that are in front of the numbers in the file
-				glm::vec3 vertex;
-				sscanf_s(currentLine.c_str(), "%s %f %f %f\n", prefixOfValues, sizeof(prefixOfValues), &vertex.x, &vertex.y, &vertex.z);
 
-				if (strcmp(prefixOfValues, "v") == 0) {
+	if (file.is_open()) // Opening file
+	{
 
-					tempVertices.push_back(vertex);
-				}
-				else if (strcmp(prefixOfValues, "vt") == 0) {
-					tempTextures.push_back(vertex);
-				}
-				else if (strcmp(prefixOfValues, "vn") == 0) {
-					tempNormals.push_back(vertex);
-				}
+
+		while (getline(file, currentLine)) // Reading through each line looking at values of string to seperate
+		{
+			std::cout << currentLine << std::endl;
+
+			if (currentLine[0] == 'v' && currentLine[1] == ' ') //Seperating based on char V and char _
+			{
+				GLfloat fl;
+
+				istringstream data(currentLine.substr(2));
+				data >> fl;
+				vertices.push_back(fl);
+				data >> fl;
+				vertices.push_back(fl);
+				data >> fl;
+				vertices.push_back(fl);
+
+				//cout << vertices[0];
+
 			}
-			else if (currentLine.at(0) == 'f') {
-				int verticesIndex[4], textureIndex[4], normalIndex[4];
-				int matches = sscanf_s(currentLine.c_str(), "f %d/%d/%d %d/%d/%d %d/%d/%d %d/%d/%d\n", &verticesIndex[0], &textureIndex[0], &normalIndex[0], &verticesIndex[1], &textureIndex[1], &normalIndex[1], &verticesIndex[2], &textureIndex[2], &normalIndex[2], &verticesIndex[3], &textureIndex[3], &normalIndex[3]);
+			else
 
-				if (matches == 9) {
-					for (int i = 0; i < 3; i++) {
-						vIndices.push_back(verticesIndex[i]);
-						tIndices.push_back(textureIndex[i]);
-						nIndices.push_back(normalIndex[i]);
-					}
+				if (currentLine[0] == 'v' && currentLine[1] == 't') //Seperating based on char V and Char T
+				{
+
+					GLfloat fl;
+
+					istringstream data(currentLine.substr(2));
+					data >> fl;
+					textures.push_back(fl);
+					data >> fl;
+					textures.push_back(fl);
+
+
+					//cout << vertices[0];
+
 				}
-				else if (matches == 12) {
-					for (int i = 0; i < 6; i++) {
-						//convert squares to triangles
-						if (i < 4) {
-							vIndices.push_back(verticesIndex[i]);
-							tIndices.push_back(textureIndex[i]);
-							nIndices.push_back(normalIndex[i]);
-						}
-						else if (i == 4) {
-							vIndices.push_back(verticesIndex[0]);
+				else
+
+					if (currentLine[0] == 'v' && currentLine[1] == 'n') //Seperating based on char V and char N
+					{
+
+						GLfloat fl;
+
+						istringstream data(currentLine.substr(2));
+						data >> fl;
+						normals.push_back(fl);
+						data >> fl;
+						normals.push_back(fl);
+						data >> fl;
+						normals.push_back(fl);
+
+						//cout << vertices[0];
+
+					}
+					else
+
+						if (currentLine[0] == 'f' && currentLine[1] == ' ') //Seperating based on char F and char _
+						{
+
+							replace(currentLine.begin(), currentLine.end(), '/', ' ');  //Replacing the / with _ to make seperating easier
+
+							GLuint tempVertices, tempNormals, tempTextures;
+							GLuint vertexIndex[4], textureIndex[4], normalIndex[4], num;
+							istringstream data(currentLine.substr(2));
+
+							data >> num;		//pushing vertex, textures, normals back first time
+							vertexIndex[0] = num;
+
+							data >> num;
+							textureIndex[0] = num;
+
+							data >> num;
+							normalIndex[0] = num;
+
+
+							data >> num;		//pushing vertex, textures, normals back second time
+							vertexIndex[1] = num;
+							data >> num;
+							textureIndex[1] = num;
+							data >> num;
+							normalIndex[1] = num;
+
+							data >> num;		//pushing vertex, textures, normals back third time
+							vertexIndex[2] = num;
+
+							data >> num;
+							textureIndex[2] = num;
+
+							data >> num;
+							normalIndex[2] = num;
+
+
+							data >> num;		//pushing vertex, textures, normals back fourth time
+							vertexIndex[3] = num;
+							data >> num;
+							textureIndex[3] = num;
+							data >> num;
+							normalIndex[3] = num;
+
+							//cout << vertexIndex[0] << "/" << textureIndex[0] << "/" << normalIndex[0] << endl;	//printing values to make sure everything working correctly, commented out after making sure.
+							//cout << vertexIndex[1] << "/" << textureIndex[1] << "/" << normalIndex[1] << endl;
+							//cout << vertexIndex[2] << "/" << textureIndex[2] << "/" << normalIndex[2] << endl;
+							//cout << vertexIndex[3] << "/" << textureIndex[3] << "/" << normalIndex[3] << endl;*/
+
+
+							vIndices.push_back(vertexIndex[0]);	//
 							tIndices.push_back(textureIndex[0]);
 							nIndices.push_back(normalIndex[0]);
-						}
-						else {
-							vIndices.push_back(verticesIndex[2]);
+
+							vIndices.push_back(vertexIndex[1]);
+							tIndices.push_back(textureIndex[1]);
+							nIndices.push_back(normalIndex[1]);
+
+							vIndices.push_back(vertexIndex[2]);
 							tIndices.push_back(textureIndex[2]);
 							nIndices.push_back(normalIndex[2]);
+
+							vIndices.push_back(vertexIndex[0]);
+							tIndices.push_back(textureIndex[0]);
+							nIndices.push_back(normalIndex[0]);
+
+							vIndices.push_back(vertexIndex[2]);
+							tIndices.push_back(textureIndex[2]);
+							nIndices.push_back(normalIndex[2]);
+
+							vIndices.push_back(vertexIndex[3]);
+							tIndices.push_back(textureIndex[3]);
+							nIndices.push_back(normalIndex[3]);
+
+
+
+
+
+							//cout << vertexIndex[0] << "/" << textureIndex[0] << "/" << normalIndex[0] << endl;
+
 						}
-					}
-				}
-				else {
-					cout << "File doesn't match the format";
-				}
-			}
 
 		}
-		//associating face data with vertex data
-		for (int i = 0; i < vIndices.size(); i++) {
-			int vertexIndex = vIndices[i];
-			glm::vec3 vertex = tempVertices[vertexIndex - 1];
-			vertices.push_back(vertex);
-			indices.push_back(i);
-		}
-		for (int i = 0; i < tIndices.size(); i++) {
-			int textureIndex = tIndices[i];
-			glm::vec2 texture = tempTextures[textureIndex - 1];
-			textures.push_back(texture);
-		}
-		for (int i = 0; i < nIndices.size(); i++) {
-			int normalIndex = nIndices[i];
-			glm::vec3 normal = tempNormals[normalIndex - 1];
-			normals.push_back(normal);
-		}
-		numberOfVertices = vertices.size();
-		file.close();
+
 	}
-	else {
-		cout << "File not found";
+
+	for (GLint i = 0; i < vIndices.size(); i++) {
+
+		GLint vertexIndex = (vIndices[i] - 1) * 3;
+		GLint normalIndex = (nIndices[i] - 1) * 3;
+
+
+		outVertices.push_back(vertices[vertexIndex]);
+		outVertices.push_back(vertices[vertexIndex + 1]);
+		outVertices.push_back(vertices[vertexIndex + 2]);
+
+		outNormals.push_back(normals[normalIndex]);
+		outNormals.push_back(normals[normalIndex + 1]);
+		outNormals.push_back(normals[normalIndex + 2]);
+
+
+	}
+
+	for (GLint i = 0; i < tIndices.size(); i++) {		//For loop for pushing textures back as did not work for some reason in the loop above
+
+		GLint textureIndex = (tIndices[i] - 1) * 2;
+
+		outTextures.push_back(textures[textureIndex]);
+		outTextures.push_back(textures[textureIndex + 1]);
+
 	}
 }
 
@@ -576,8 +656,7 @@ void processInput(GLFWwindow *window)
 // ---------------------------------------------------------------------------------------------
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
-	// make sure the viewport matches the new window dimensions; note that width and 
-	// height will be significantly larger than specified on retina displays.
+	// make sure the viewport matches the new window dimensions
 	glViewport(0, 0, width, height);
 }
 
@@ -585,36 +664,36 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 // -------------------------------------------------------
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 {
-	//if (firstMouse)
-	//{
-	//	lastX = xpos;
-	//	lastY = ypos;
-	//	firstMouse = false;
-	//}
+	if (firstMouse)
+	{
+		lastX = xpos;
+		lastY = ypos;
+		firstMouse = false;
+	}
 
-	//float xoffset = xpos - lastX;
-	//float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
-	//lastX = xpos;
-	//lastY = ypos;
+	float xoffset = xpos - lastX;
+	float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+	lastX = xpos;
+	lastY = ypos;
 
-	//float sensitivity = 0.1f;
-	//xoffset *= sensitivity;
-	//yoffset *= sensitivity;
+	float sensitivity = 0.1f;
+	xoffset *= sensitivity;
+	yoffset *= sensitivity;
 
-	//yaw += xoffset;
-	//pitch += yoffset;
+	yaw += xoffset;
+	pitch += yoffset;
 
-	//// make sure that when pitch is out of bounds, screen doesn't get flipped
-	//if (pitch > 89.0f)
-	//	pitch = 89.0f;
-	//if (pitch < -89.0f)
-	//	pitch = -89.0f;
+	// make sure that when pitch is out of bounds, screen doesn't get flipped
+	if (pitch > 89.0f)
+		pitch = 89.0f;
+	if (pitch < -89.0f)
+		pitch = -89.0f;
 
-	//glm::vec3 front;
-	//front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-	//front.y = sin(glm::radians(pitch));
-	//front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-	//cameraFront = glm::normalize(front);
+	glm::vec3 front;
+	front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+	front.y = sin(glm::radians(pitch));
+	front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+	cameraFront = glm::normalize(front);
 }
 
 // glfw: whenever the mouse scroll wheel scrolls, this callback is called
@@ -627,4 +706,121 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 		fov = 1.0f;
 	if (fov >= 45.0f)
 		fov = 45.0f;
+}
+
+void
+loadMTLFile(string file_name, vector<GLfloat>& colour, vector<GLfloat>& diffuse, vector<GLfloat>& specular, GLfloat& ns, string& texture_name) //Loading Material file
+{
+
+	string line;
+	ifstream myFile("Media/Creeper-obj/" + file_name + ".mtl"); // Reading in specific file
+	GLfloat transparency = -1;
+
+
+	if (myFile.is_open()) // Opening file
+	{
+		GLfloat fl;
+
+
+		while (getline(myFile, line)) // Reading through each line looking at values of string to seperate
+		{
+			std::cout << line << std::endl;
+
+			if (line[0] == 'K' && line[1] == 'a') 
+			{
+
+				istringstream data(line.substr(2));
+				data >> fl;
+				colour.push_back(fl);
+
+				data >> fl;
+				colour.push_back(fl);
+
+				data >> fl;
+				colour.push_back(fl);
+
+				data >> fl;
+				colour.push_back(fl);
+
+
+			}
+			else
+
+				if (line[0] == 'd' && line[1] == ' ') 
+				{
+
+					istringstream data(line.substr(2));
+					data >> fl;
+					transparency = fl;
+
+					if (transparency == -1)
+					{
+						transparency = 1;
+					}
+
+					colour.push_back(transparency);
+
+				}
+				else
+
+					if (line[0] == 'K' && line[1] == 'd') 
+					{
+
+
+						istringstream data(line.substr(2));
+						data >> fl;
+						diffuse.push_back(fl);
+
+						data >> fl;
+						diffuse.push_back(fl);
+
+						data >> fl;
+						diffuse.push_back(fl);
+					}
+					else
+
+						if (line[0] == 'K' && line[1] == 's') 
+						{
+
+							istringstream data(line.substr(2));
+							data >> fl;
+							specular.push_back(fl);
+
+							data >> fl;
+							specular.push_back(fl);
+
+							data >> fl;
+							specular.push_back(fl);
+
+
+						}
+						else
+
+							if (line[0] == 'N' && line[1] == 's') 
+							{
+
+
+								istringstream data(line.substr(2));
+								data >> fl;
+								ns = fl;
+
+							}
+							else
+
+								if (line.substr(0, 6) == "map_Kd")
+								{
+
+									istringstream data(line.substr(7));
+									texture_name = data.str();
+
+
+								}
+
+		}
+
+		texture_name = "Media/" + texture_name; //Name of texture
+
+
+	}
+
 }

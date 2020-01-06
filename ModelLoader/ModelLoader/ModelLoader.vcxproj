@@ -124,12 +124,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="Media\Creeper.mtl" />
-    <None Include="Media\triangles.frag" />
-    <None Include="Media\triangles.vert" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="LoadShaders.h" />
     <ClInclude Include="stb_image.h" />
@@ -138,9 +132,6 @@
   <ItemGroup>
     <ClCompile Include="LoadShaders.cpp" />
     <ClCompile Include="Source.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="Media\Creeper.obj" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
