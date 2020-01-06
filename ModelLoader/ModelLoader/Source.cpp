@@ -30,16 +30,10 @@ using namespace std;
 
 #define BUFFER_OFFSET(a) ((void*)(a))
 
-//Struct containing vectors which parsed values are passed into by v/vt/vnVector:
-struct fValues {
-	vector<vec3> fVertexValueInd;
-	vector<vec2> fVertexTextureInd;
-	vector<vec3> fVertexNormalInd;
-};
+
 
 string path; //String to hold user input for file address
 
-fValues Value; //fValues object
 
 //Vectors used in parsing which strings read are split into accordingly:
 vector<vec3> vVector;
@@ -67,6 +61,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void processInput(GLFWwindow* window);
+void loadModel(string fileToOpen);
 
 // settings
 const unsigned int SCR_WIDTH = 800;
@@ -418,37 +413,40 @@ int main(int argc, char** argv)
 	vector<GLfloat> specular;
 	GLfloat ns; //Specular Exponent
 	string texture_name;
-	glfwInit();
-
-	GLFWwindow* window = glfwCreateWindow(800, 600, "Model Loader", NULL, NULL); //orignal values were 800, 600
-
-	glfwMakeContextCurrent(window);
-	glewInit();
 
 	string fileToOpen;
 	cout << "Please enter the Object you want to open: ";
 	cin >> fileToOpen;
 	cout << fileToOpen << ".obj is the file you're opening\n";
 
+	loadModel(fileToOpen);
+	glfwInit();
+
+	GLFWwindow* window = glfwCreateWindow(800, 600, "Extended Model Loader CW2", NULL, NULL); // Loading Window
+
+	glfwMakeContextCurrent(window); //Making sure that can have User Input
+	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+	glfwSetCursorPosCallback(window, mouse_callback);
+	glfwSetScrollCallback(window, scroll_callback);
+
+	// tell GLFW to capture our mouse
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	glewInit();
+
+	cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);	//Resetting Camera each time scene re-opens
+	cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+	cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+
 	init(vertices, textures, normals, texture_name, colour, diffuse, specular, ns);
 	GLfloat timer = 0.0f;
 	while (!glfwWindowShouldClose(window))
 	{
-		float currentFrame = glfwGetTime();
-		deltaTime = currentFrame - lastFrame;
-		lastFrame = currentFrame;
-
-		// uncomment to draw only wireframe 
-		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		processInput(window);
 
 		display(timer);
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 		timer += 0.1f;
-		processInput(window);
-		// camera/view transformation
-		glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-
 
 	}
 
@@ -556,10 +554,11 @@ void loadModel(string fileToOpen) {
 
 void processInput(GLFWwindow *window)
 {
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) // Close on exit
 		glfwSetWindowShouldClose(window, true);
 
-	float cameraSpeed = 2.5 * deltaTime;
+
+	float cameraSpeed = 2.5 * deltaTime; // Setting Camera Speed
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 		cameraPos += cameraSpeed * cameraFront;
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
@@ -568,4 +567,66 @@ void processInput(GLFWwindow *window)
 		cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+
+	if (glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS) //Allowing for line mode on holding key down
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	if (glfwGetKey(window, GLFW_KEY_L) == GLFW_RELEASE)
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+}
+
+// glfw: whenever the window size changed (by OS or user resize) this callback function executes
+// ---------------------------------------------------------------------------------------------
+void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
+	// make sure the viewport matches the new window dimensions; note that width and 
+	// height will be significantly larger than specified on retina displays.
+	glViewport(0, 0, width, height);
+}
+
+// glfw: whenever the mouse moves, this callback is called
+// -------------------------------------------------------
+void mouse_callback(GLFWwindow* window, double xpos, double ypos)
+{
+	//if (firstMouse)
+	//{
+	//	lastX = xpos;
+	//	lastY = ypos;
+	//	firstMouse = false;
+	//}
+
+	//float xoffset = xpos - lastX;
+	//float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+	//lastX = xpos;
+	//lastY = ypos;
+
+	//float sensitivity = 0.1f;
+	//xoffset *= sensitivity;
+	//yoffset *= sensitivity;
+
+	//yaw += xoffset;
+	//pitch += yoffset;
+
+	//// make sure that when pitch is out of bounds, screen doesn't get flipped
+	//if (pitch > 89.0f)
+	//	pitch = 89.0f;
+	//if (pitch < -89.0f)
+	//	pitch = -89.0f;
+
+	//glm::vec3 front;
+	//front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+	//front.y = sin(glm::radians(pitch));
+	//front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+	//cameraFront = glm::normalize(front);
+}
+
+// glfw: whenever the mouse scroll wheel scrolls, this callback is called
+// ----------------------------------------------------------------------
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+	if (fov >= 1.0f && fov <= 45.0f)
+		fov -= yoffset;
+	if (fov <= 1.0f)
+		fov = 1.0f;
+	if (fov >= 45.0f)
+		fov = 45.0f;
 }

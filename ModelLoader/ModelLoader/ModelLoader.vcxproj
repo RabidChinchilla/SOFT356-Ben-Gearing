@@ -124,6 +124,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="Media\Creeper-obj\Creeper.mtl" />
+    <None Include="Media\Creeper.mtl" />
     <None Include="Media\triangles.frag" />
     <None Include="Media\triangles.vert" />
     <None Include="packages.config" />
@@ -139,10 +141,11 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Object Include="Media\Creeper-obj\Creeper.obj">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <DeploymentContent>true</DeploymentContent>
-    </Object>
+    <Object Include="Media\Creeper-obj\Creeper.obj" />
+    <Object Include="Media\Creeper.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Media\Creeper-obj\Texture.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
