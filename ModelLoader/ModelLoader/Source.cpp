@@ -22,6 +22,8 @@ using namespace glm;
 #include "LoadShaders.h"
 using namespace std;
 
+#include <GL/glut.h>
+#include <GLFW/glfw3.h>
 
 
 enum VAO_IDs { Object, NumVAOs = 1 };
@@ -34,6 +36,16 @@ GLuint shader;
 
 int numberOfVertices;
 
+void processInput(GLFWwindow *window);
+
+// camera
+glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
+glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+
+// timing
+float deltaTime = 0.0f;	// time between current frame and last frame
+float lastFrame = 0.0f;
 
 #define BUFFER_OFFSET(a) ((void*)(a))
 
@@ -316,6 +328,8 @@ void display(GLfloat delta)
 	// creating the projection matrix
 	glm::mat4 projection = glm::perspective(45.0f, 4.0f / 3, 0.1f, 20.0f);
 
+	
+
 	// Adding all matrices up to create combined matrix
 	glm::mat4 mv = view * model;
 
@@ -353,6 +367,10 @@ int main(int argc, char** argv)
 	GLfloat timer = 0.0f;
 	while (!glfwWindowShouldClose(window))
 	{
+		float currentFrame = glfwGetTime();
+		deltaTime = currentFrame - lastFrame;
+		lastFrame = currentFrame;
+
 		// uncomment to draw only wireframe 
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
@@ -360,9 +378,34 @@ int main(int argc, char** argv)
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 		timer += 0.1f;
+		processInput(window);
+		// camera/view transformation
+		glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+
+
 	}
 
 	glfwDestroyWindow(window);
 
 	glfwTerminate();
+}
+
+void loadModel(string fileChosen) {
+
+}
+
+void processInput(GLFWwindow *window)
+{
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		glfwSetWindowShouldClose(window, true);
+
+	float cameraSpeed = 2.5 * deltaTime;
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+		cameraPos += cameraSpeed * cameraFront;
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+		cameraPos -= cameraSpeed * cameraFront;
+	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+		cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+		cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
 }
