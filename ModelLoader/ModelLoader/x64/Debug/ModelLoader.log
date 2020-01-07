@@ -1,8 +1,14 @@
 ﻿  Source.cpp
-C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(339,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(530,15): warning C4101: 'tempVertices': unreferenced local variable
-C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(530,29): warning C4101: 'tempNormals': unreferenced local variable
-C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(530,42): warning C4101: 'tempTextures': unreferenced local variable
-C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(643,20): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(709,17): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(326,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(521,15): warning C4101: 'tempVertices': unreferenced local variable
+C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(521,29): warning C4101: 'tempNormals': unreferenced local variable
+C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(521,42): warning C4101: 'tempTextures': unreferenced local variable
+C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(634,20): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(664,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(665,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(669,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(670,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(671,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(672,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\ModelLoader\Source.cpp(699,17): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
   ModelLoader.vcxproj -> C:\Users\Gearing\Documents\GitHub\SOFT356-Ben-Gearing\ModelLoader\x64\Debug\ModelLoader.exe

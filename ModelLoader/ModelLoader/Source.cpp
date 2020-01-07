@@ -6,6 +6,8 @@
 #include <glm/ext/matrix_transform.hpp> // GLM: translate, rotate
 #include <glm/ext/matrix_clip_space.hpp> // GLM: perspective and ortho 
 #include <glm/gtc/type_ptr.hpp> // GLM: access to the value_ptr
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
 #include<sstream>
 #include<string>
 #include<fstream>
@@ -13,46 +15,28 @@
 #include<vector>
 #include<algorithm>
 
-using namespace glm;
-
-#define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
-#include "LoadShaders.h"
 using namespace std;
-
-#include <GL/glut.h>
-
-#define BUFFER_OFFSET(a) ((void*)(a))
-
-string path; //String to hold user input for file address
-
-
-//Vectors used in parsing which strings read are split into accordingly:
-vector<vec3> vVector;
-vector<vec2> vtVector;
-vector<vec3> vnVector;
-
-vector<string> tempSplit; //Passed into when parsing face values
+// to use this example you will need to download the header files for GLM put them into a folder which you will reference in
+// properties -> VC++ Directories -> libraries
 
 enum VAO_IDs { Object, NumVAOs = 1 };
 enum Buffer_IDs { Triangles, Colours, Normals, Textures, Indices, NumBuffers = 5 };
-//enum Attrib_IDs { vPosition = 0, aTexCoord = 1, vNormals = 2 };
 
-GLuint VAOs[NumVAOs];
-GLuint Buffers[NumBuffers];
+GLuint  VAOs[NumVAOs];
+GLuint  Buffers[NumBuffers];
 GLuint texture1;
 
 GLuint shader;
+const GLuint  numberOfVertices = 36;
 
-int numberOfVertices;
-
-
+//Added in CW2
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void processInput(GLFWwindow* window);
 void loadModel(string fileToOpen, vector<GLfloat>& outVertices, vector<GLfloat>& outTextures, vector<GLfloat>& outNormals);
 void loadMTLFile(string file_name, vector<GLfloat>& colour, vector<GLfloat>& diffuse, vector<GLfloat>& specular, GLfloat& ns, string& texture_name);
+
 
 // settings
 const unsigned int SCR_WIDTH = 800;
@@ -64,8 +48,8 @@ glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
 glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 
 bool firstMouse = true;
-float yaw = -90.0f;	// yaw is initialized to -90.0 degrees since a yaw of 0.0 results in a direction vector pointing to the right so we initially rotate a bit to the left.
-float pitch = 0.0f;
+float xyaw = -90.0f;	// yaw is initialized to -90.0 degrees since a yaw of 0.0 results in a direction vector pointing to the right so we initially rotate a bit to the left.
+float ypitch = 0.0f;
 float lastX = 800.0f / 2.0;
 float lastY = 600.0 / 2.0;
 float fov = 45.0f;
@@ -81,41 +65,49 @@ void init(vector<GLfloat>& vertices, vector<GLfloat>& textures, vector<GLfloat>&
 	glGenVertexArrays(NumVAOs, VAOs);
 	glBindVertexArray(VAOs[Object]);
 
-	ShaderInfo shaders[] =
+	ShaderInfo  shaders[] = // Loading Shaders in
 	{
-		{ GL_VERTEX_SHADER, "Media/triangles.vert"},
-		{ GL_FRAGMENT_SHADER, "Media/triangles.frag"},
-		{ GL_NONE, NULL}
+		{ GL_VERTEX_SHADER, "media/triangles.vert" },
+		{ GL_FRAGMENT_SHADER, "media/triangles.frag" },
+		{ GL_NONE, NULL }
 	};
 
 	shader = LoadShaders(shaders);
 	glUseProgram(shader);
 
-	//Lighting
-	// ambient light
-	glm::vec4 ambient = glm::vec4(colour[0], colour[1], colour[2], colour[3]);
+	//
+	// configuring lighting
+	//
+
+	// ambient light - Seen in project 5 after struggling with the initial implementation
+	glm::vec4 ambient = glm::vec4(colour[0], colour[1], colour[2], colour[3]); // Reading the colour values into a Vec4
 	//adding the Uniform to the shader
 	GLuint aLoc = glGetUniformLocation(shader, "ambient");
 	glUniform4fv(aLoc, 1, glm::value_ptr(ambient));
 
 	// light object
-	glm::vec3 lightPos = glm::vec3(100.0f, 25.0f, 100.0f);
+	glm::vec3 lightPos = glm::vec3(100.0f, 25.0f, 100.0f); // Adding Light values in
 	GLuint dLightPosLoc = glGetUniformLocation(shader, "lightPos");
 	glUniform3fv(dLightPosLoc, 1, glm::value_ptr(lightPos));
 
 
 	// diffuse light
-	glm::vec3 diffuseLight = glm::vec3(diffuse[0], diffuse[1], diffuse[2]);
+	glm::vec3 diffuseLight = glm::vec3(diffuse[0], diffuse[1], diffuse[2]); // Reading diffuse into Vec3
 	GLuint dLightLoc = glGetUniformLocation(shader, "dLight");
 	glUniform3fv(dLightLoc, 1, glm::value_ptr(diffuseLight));
 
+
+
 	// specular light
-	glm::vec3 specularLight = glm::vec3(specular[0], specular[1], specular[2]);
-	GLfloat shininess = 256; //128 is max value
-	GLuint sLightLoc = glGetUniformLocation(shader, "sLight");
-	GLuint sShineLoc = glGetUniformLocation(shader, "sShine");
+	glm::vec3 specularLight = glm::vec3(specular[0], specular[1], specular[2]); //Reading Specular into Vec3
+	GLfloat shininess = ns; //128 is max value - Setting the Specular Exponent
+	GLuint sLightLoc = glGetUniformLocation(shader, "sLight"); // Geting uniform for specular light
+	GLuint sShineLoc = glGetUniformLocation(shader, "sShine"); // Getting uniform for Shininess
 	glUniform3fv(sLightLoc, 1, glm::value_ptr(specularLight));
 	glUniform1fv(sShineLoc, 1, &shininess);
+
+
+	// setting up the colours
 
 	GLfloat  colours[][4] = {
 		{ 1.0f, 1.0f, 1.0f, 1.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 1.0f, 1.0f, 1.0f, 1.0f },
@@ -138,6 +130,99 @@ void init(vector<GLfloat>& vertices, vector<GLfloat>& textures, vector<GLfloat>&
 
 	};
 
+
+
+	glGenBuffers(NumBuffers, Buffers);
+
+	glBindBuffer(GL_ARRAY_BUFFER, Buffers[Triangles]);
+	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(GLfloat), vertices.data(), GL_STATIC_DRAW);
+
+	glVertexAttribPointer(Triangles, 3, GL_FLOAT,
+		GL_FALSE, 0, BUFFER_OFFSET(0));
+
+	//Colour Binding
+	glBindBuffer(GL_ARRAY_BUFFER, Buffers[Colours]);
+	glBufferStorage(GL_ARRAY_BUFFER, sizeof(colours), colours, 0);
+
+	glVertexAttribPointer(Colours, 4, GL_FLOAT,
+		GL_FALSE, 0, BUFFER_OFFSET(0));
+
+
+	//Normal Binding
+	glBindBuffer(GL_ARRAY_BUFFER, Buffers[Normals]);
+	glBufferStorage(GL_ARRAY_BUFFER, normals.size() * sizeof(GLfloat), normals.data(), 0);
+
+
+	glVertexAttribPointer(Normals, 3, GL_FLOAT,
+		GL_FALSE, 0, BUFFER_OFFSET(0));
+
+	//Texture Binding
+	glBindBuffer(GL_ARRAY_BUFFER, Buffers[Textures]);
+	glBufferData(GL_ARRAY_BUFFER, textures.size() * sizeof(GLfloat), textures.data(), GL_STATIC_DRAW);
+	glVertexAttribPointer(Textures, 2, GL_FLOAT,
+		GL_FALSE, 0, BUFFER_OFFSET(0));
+
+	// load and create a texture 
+	// -------------------------
+
+	// texture 1
+	// ---------
+	glGenTextures(1, &texture1);
+	glBindTexture(GL_TEXTURE_2D, texture1);
+	// set the texture wrapping parameters
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// set texture wrapping to GL_REPEAT (default wrapping method)
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	// set texture filtering parameters
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	// load image, create texture and generate mipmaps
+	GLint width, height, nrChannels;
+	stbi_set_flip_vertically_on_load(true); // tell stb_image.h to flip loaded texture's on the y-axis.
+	unsigned char* data = stbi_load(texture_name.c_str(), &width, &height, &nrChannels, 0);
+	if (data)
+	{
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+	}
+	else
+	{
+		std::cout << "Failed to load texture" << std::endl;
+	}
+	stbi_image_free(data);
+
+
+	glUniform1i(glGetUniformLocation(shader, "texture1"), 0);
+
+
+	// creating the model matrix
+	glm::mat4 model = glm::mat4(1.0f);
+	model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+
+
+	// creating the view matrix
+	glm::mat4 view = glm::mat4(1.0f);
+	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -4.0f));
+
+	// creating the projection matrix
+	glm::mat4 projection = glm::perspective(45.0f, 4.0f / 3, 0.1f, 20.0f);
+
+	// Adding all matrices up to create combined matrix
+	glm::mat4 mv = view * model;
+
+
+	//adding the Uniform to the shader
+	int mvLoc = glGetUniformLocation(shader, "mv_matrix");
+	glUniformMatrix4fv(mvLoc, 1, GL_FALSE, glm::value_ptr(mv));
+	//adding the Uniform to the shader
+	int pLoc = glGetUniformLocation(shader, "p_matrix");
+	glUniformMatrix4fv(pLoc, 1, GL_FALSE, glm::value_ptr(projection));
+
+	glEnableVertexAttribArray(Triangles);
+	glEnableVertexAttribArray(Colours);
+	glEnableVertexAttribArray(Textures);
+	glEnableVertexAttribArray(Normals);
+
+	////CW1 Parsing
 	//string path;
 
 	////file parsing
@@ -235,92 +320,7 @@ void init(vector<GLfloat>& vertices, vector<GLfloat>& textures, vector<GLfloat>&
 
 	//feeding VAO's into buffers
 
-	glGenBuffers(NumBuffers, Buffers);
-
-	glBindBuffer(GL_ARRAY_BUFFER, Buffers[Triangles]);
-	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(GLfloat), vertices.data(), GL_STATIC_DRAW);
-
-	glVertexAttribPointer(Triangles, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
-
-
-	//Colour Binding
-	glBindBuffer(GL_ARRAY_BUFFER, Buffers[Colours]);
-	glBufferStorage(GL_ARRAY_BUFFER, sizeof(colours), colours, 0);
-
-	glVertexAttribPointer(Colours, 4, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
-
-
-	//Normal Binding
-	glBindBuffer(GL_ARRAY_BUFFER, Buffers[Normals]);
-	glBufferStorage(GL_ARRAY_BUFFER, normals.size() * sizeof(GLfloat), normals.data(), 0);
-
-
-	glVertexAttribPointer(Normals, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
-
-	//Texture Binding
-	glBindBuffer(GL_ARRAY_BUFFER, Buffers[Textures]);
-	glBufferData(GL_ARRAY_BUFFER, textures.size() * sizeof(GLfloat), textures.data(), GL_STATIC_DRAW);
-	glVertexAttribPointer(Textures, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
-
-	// load and create a texture 
-	// -------------------------
-
-	// texture 1
-	// ---------
-	glGenTextures(1, &texture1);
-	glBindTexture(GL_TEXTURE_2D, texture1);
-	// set the texture wrapping parameters
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// set texture wrapping to GL_REPEAT (default wrapping method)
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	// set texture filtering parameters
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	// load image, create texture and generate mipmaps
-	GLint width, height, nrChannels;
-	stbi_set_flip_vertically_on_load(true); // tell stb_image.h to flip loaded texture's on the y-axis.
-	unsigned char* data = stbi_load(texture_name.c_str(), &width, &height, &nrChannels, 0);
-	if (data)
-	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-		glGenerateMipmap(GL_TEXTURE_2D);
-	}
-	else
-	{
-		std::cout << "Failed to load texture" << std::endl;
-	}
-	stbi_image_free(data);
-
-
-	glUniform1i(glGetUniformLocation(shader, "texture1"), 0);
-
-
-	// creating the model matrix
-	glm::mat4 model = glm::mat4(1.0f);
-	model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
-
-
-	// creating the view matrix
-	glm::mat4 view = glm::mat4(1.0f);
-	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -4.0f));
-
-	// creating the projection matrix
-	glm::mat4 projection = glm::perspective(45.0f, 4.0f / 3, 0.1f, 20.0f);
-
-	// Adding all matrices up to create combined matrix
-	glm::mat4 mv = view * model;
-
-
-	//adding the Uniform to the shader
-	int mvLoc = glGetUniformLocation(shader, "mv_matrix");
-	glUniformMatrix4fv(mvLoc, 1, GL_FALSE, glm::value_ptr(mv));
-	//adding the Uniform to the shader
-	int pLoc = glGetUniformLocation(shader, "p_matrix");
-	glUniformMatrix4fv(pLoc, 1, GL_FALSE, glm::value_ptr(projection));
-
-	glEnableVertexAttribArray(Triangles);
-	glEnableVertexAttribArray(Colours);
-	glEnableVertexAttribArray(Textures);
-	glEnableVertexAttribArray(Normals);
+	
 }
 
 void display(GLfloat delta)
@@ -336,23 +336,20 @@ void display(GLfloat delta)
 
 	// bind textures on corresponding texture units
 	//glFrontFace(GL_CW);
-	//glCullFace(GL_BACK); //commented out because it caused the model to be see through
+	// glCullFace(GL_BACK);
 	glEnable(GL_CULL_FACE);
 	// creating the model matrix
 	glm::mat4 model = glm::mat4(1.0f);
 	model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
-	model = glm::rotate(model, glm::radians(delta), glm::vec3(0.5f, 0.2f, 0.3f));
+	model = glm::rotate(model, glm::radians(delta), glm::vec3(1.0f, 0.0f, 0.0f));
 
 
 	// creating the view matrix
 	glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -4.0f)); // 1st changes horizontal position, 2nd changes vertical and 3rd changes z position
+	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -4.0f));
 
 	// creating the projection matrix
-	//glm::mat4 projection = glm::perspective(45.0f, 4.0f / 3, 0.1f, 20.0f);
 	glm::mat4 projection = glm::perspective(glm::radians(fov), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-
-	
 
 	// Adding all matrices up to create combined matrix
 	glm::mat4 mv = view * model;
@@ -366,11 +363,10 @@ void display(GLfloat delta)
 	glUniformMatrix4fv(pLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
 
-
-
+	//CW2 Made it so that 2 creepers spawn
 	glBindVertexArray(VAOs[Object]);
 	glBindTexture(GL_TEXTURE_2D, texture1);
-	glDrawElements(GL_TRIANGLES, numberOfVertices, GL_UNSIGNED_INT, 0); //Draw first Shape
+	glDrawArrays(GL_TRIANGLES, 0, numberOfVertices); // Draw first shape
 
 	model = glm::rotate(model, glm::radians(delta), glm::vec3(0.0f, 1.0f, 0.0f));
 	model = glm::translate(model, glm::vec3(1.0f, 1.0f, 1.0f));
@@ -379,7 +375,7 @@ void display(GLfloat delta)
 	glUniformMatrix4fv(mvLoc, 1, GL_FALSE, glm::value_ptr(mv));
 	glUniformMatrix4fv(pLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
-	glDrawElements(GL_TRIANGLES, numberOfVertices, GL_UNSIGNED_INT, 0);//Draw second Shape
+	glDrawArrays(GL_TRIANGLES, 0, numberOfVertices); // Draw Second Shape
 }
 
 int main(int argc, char** argv)
@@ -396,13 +392,14 @@ int main(int argc, char** argv)
 
 	string fileToOpen;
 	cout << "Please enter the Object you want to open: ";
-	cin >> fileToOpen;
-	cout << fileToOpen << ".obj is the file you're opening\n";
+	//cin >> fileToOpen;
+	//cout << fileToOpen << ".obj is the file you're opening\n";
 
 	while (true) // While loop for loading in file on name entry, Displaying, Allowing User Input
 	{
 
-		//cin >> fileToOpen;
+		cin >> fileToOpen;
+		cout << fileToOpen << ".obj is the file you're opening\n";
 		loadModel(fileToOpen, vertices, textures, normals);
 		loadMTLFile(fileToOpen, colour, diffuse, specular, ns, texture_name);
 		glfwInit();
@@ -442,7 +439,7 @@ int main(int argc, char** argv)
 
 	}
 }
-
+//CW2 made it so loadmodel and parsing is seperate from the init method
 void loadModel(string fileToOpen, vector<GLfloat>& outVertices, vector<GLfloat>& outTextures, vector<GLfloat>& outNormals) {
 
 	//file parsing
@@ -452,10 +449,10 @@ void loadModel(string fileToOpen, vector<GLfloat>& outVertices, vector<GLfloat>&
 	vector<GLuint> vIndices, tIndices, nIndices;
 
 	//path = "Media/Creeper-obj/" + fileToOpen + ".obj";
-	path = "Media/" + fileToOpen + ".obj";
+	//path = "Media/" + fileToOpen + ".obj";
 
 	string currentLine;
-	ifstream file(path);
+	ifstream file("Media/Creeper-obj/" + fileToOpen + ".obj");
 
 
 	if (file.is_open()) // Opening file
@@ -629,7 +626,7 @@ void loadModel(string fileToOpen, vector<GLfloat>& outVertices, vector<GLfloat>&
 
 	}
 }
-
+//CW2 made it so you can get input from the keyboard
 void processInput(GLFWwindow *window)
 {
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) // Close on exit
@@ -680,19 +677,19 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 	xoffset *= sensitivity;
 	yoffset *= sensitivity;
 
-	yaw += xoffset;
-	pitch += yoffset;
+	xyaw += xoffset;
+	ypitch += yoffset;
 
 	// make sure that when pitch is out of bounds, screen doesn't get flipped
-	if (pitch > 89.0f)
-		pitch = 89.0f;
-	if (pitch < -89.0f)
-		pitch = -89.0f;
+	if (ypitch > 89.0f)
+		ypitch = 89.0f;
+	if (ypitch < -89.0f)
+		ypitch = -89.0f;
 
 	glm::vec3 front;
-	front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-	front.y = sin(glm::radians(pitch));
-	front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+	front.x = cos(glm::radians(xyaw)) * cos(glm::radians(ypitch));
+	front.y = sin(glm::radians(ypitch));
+	front.z = sin(glm::radians(xyaw)) * cos(glm::radians(ypitch));
 	cameraFront = glm::normalize(front);
 }
 
@@ -707,7 +704,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 	if (fov >= 45.0f)
 		fov = 45.0f;
 }
-
+//CW2 Loads MTL file for the object
 void
 loadMTLFile(string file_name, vector<GLfloat>& colour, vector<GLfloat>& diffuse, vector<GLfloat>& specular, GLfloat& ns, string& texture_name) //Loading Material file
 {
