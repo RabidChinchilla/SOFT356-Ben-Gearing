@@ -369,7 +369,7 @@ void display(GLfloat delta)
 	glDrawArrays(GL_TRIANGLES, 0, numberOfVertices); // Draw first shape
 
 	model = glm::rotate(model, glm::radians(delta), glm::vec3(0.0f, 1.0f, 0.0f));
-	model = glm::translate(model, glm::vec3(1.0f, 1.0f, 1.0f));
+	model = glm::translate(model, glm::vec3(1.0f, 3.0f, 1.0f));
 	projection = glm::perspective(glm::radians(fov), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
 	mv = view * model;
 	glUniformMatrix4fv(mvLoc, 1, GL_FALSE, glm::value_ptr(mv));
